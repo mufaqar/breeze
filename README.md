@@ -244,3 +244,5 @@ The new `app` folder introduced in Next.js 13 is still in beta. Even though some
 Material UI offers a quick way to build a reasonably looking and consistent UI. With the combination of Tailwind CSS, My experience has been that the task of making fine-tuning adjustments to Material UI is easier since the need for defining new CSS classes and inline styles is minimized.
 
 If you would like to check out the code described in this article, you can clone it from [Github](https://github.com/tatleung/nextjs13-with-mui-and-tailwindcss).
+#   b r e e z e  
+ 
