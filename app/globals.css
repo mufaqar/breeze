@@ -55,12 +55,12 @@ input:-internal-autofill-selected {
   width: 52px;
   height: 27px !important;
 }
-.switch label span span span .css-8je8zh-MuiTouchRipple-root {
+/* .switch label span span span .css-8je8zh-MuiTouchRipple-root {
   display: none;
 }
 .switch label span .css-1yjjitx-MuiSwitch-track {
   display: none;
-}
+} */
 .switch .MuiSwitch-thumb {
   margin-top: -5.5px;
   margin-left: -3px;

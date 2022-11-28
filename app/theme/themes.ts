@@ -52,6 +52,9 @@ export const lightTheme = createTheme({
         switchBase: {
           color: "#1C1917"
         },
+        track: {
+          display: 'none'
+        }
       }
     }
   }
