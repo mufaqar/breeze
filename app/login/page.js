@@ -8,11 +8,12 @@ import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import Link from "next/link";
+import Loading from "../components/loading";
 
 const initialValue = {
   name: "123",
-  email: "email",
-  password: "",
+  email: "email@email.com",
+  password: "password",
 };
 
 export default function Login() {
@@ -21,6 +22,10 @@ export default function Login() {
   const [stepTwo, setStepTwo] = useState(false);
   const [stepThree, setStepThree] = useState(false);
   const [password, showPassword] = useState(true);
+  const [loader, setloader] = useState(false);
+  const [wrongCredentials, setWrongCredentials] = useState(false);
+  
+
 
   const handleStepOne = () => {
     setStepOne(true);
@@ -33,9 +38,14 @@ export default function Login() {
     setStepThree(false);
   };
   const handleStepThree = () => {
-    setStepOne(false);
-    setStepTwo(false);
-    setStepThree(true);
+    setloader(true)
+    setTimeout(() => {
+      setloader(false)
+      if(field.email != 'email@email.com' || field.password != 'password' ){
+        setWrongCredentials(true)
+      }
+    }, 3000)
+
   };
 
   return (
@@ -43,11 +53,11 @@ export default function Login() {
       <Box
         component="main"
         sx={{ backgroundImage: `url(${loginBg.src})` }}
-        className="h-screen w-full flex justify-center items-center bg-cover bg-no-repeat"
+        className="h-screen relative w-full flex justify-center items-center bg-cover bg-no-repeat"
       >
         {/* First Step */}
         <div className={`flex flex-col justify-between items-center ${stepOne ? "hidden" : "block"}`}>
-          <span className="text-3xl font-bold text-white">Hello, what's your name?</span>
+          <span className="text-4xl  text-white">Hello, what's your name?</span>
           <Box className="border-2 border-white w-full inputwrapper flex flex-col justify-center items-center">
             <input
               id="standard-adornment-password"
@@ -75,7 +85,7 @@ export default function Login() {
         <div
           className={` flex-col flex justify-between items-center ${stepTwo ? "hidden" : stepOne ? "block" : "hidden"}`}
         >
-          <span className="text-3xl font-bold text-white">what's your email {field.name}</span>
+          <span className="text-4xl  text-white">what's your email {field.name}</span>
           <Box className="border-2 border-white w-full inputwrapper flex flex-col justify-center items-center">
             <input
               id="standard-adornment-password"
@@ -106,7 +116,7 @@ export default function Login() {
             stepThree ? "hidden" : stepTwo ? "block" : "hidden"
           }`}
         >
-          <span className="text-3xl font-bold text-white">what's your password</span>
+          <span className="text-4xl text-white">what's your password</span>
           <Box className="border-2 relative border-white w-full inputwrapper flex flex-col justify-center items-center">
             <input
               id="standard-adornment-password"
@@ -119,7 +129,7 @@ export default function Login() {
               type={password ? "password" : "text"}
             />
             
-            <InputAdornment className="absolute right-0">
+            <InputAdornment className="absolute right-0 pr-4">
               <IconButton aria-label="toggle password visibility" onClick={() => showPassword(!password)}>
                 {password ? (
                   <VisibilityOffIcon style={{ color: "white" }} />
@@ -129,7 +139,8 @@ export default function Login() {
               </IconButton>
             </InputAdornment>
           </Box>
-          <p className="text-white -mt-2">Learn more in our Terms & <Link href="#" className="underline text-white">Privacy Policy.</Link></p>
+          {wrongCredentials && <p className="text-white -mt-2 text-center italic">The password you entered for <br/> the email {field.email} is’t right.</p>}
+          <p className={`text-white -mt-2 ${wrongCredentials && 'mt-0' } `}>Learn more in our Terms & <Link href="#" className="underline text-white">Privacy Policy.</Link></p>
           <FormControlLabel control={<Checkbox style={{ color: "white" }} />} label="Sign up for the Weekly Newsletter" className="text-white -mt-4 mb-8"/>
           {field.name.length > 0 && (
             <Button
@@ -138,10 +149,13 @@ export default function Login() {
               onClick={handleStepThree} 
               className={`rounded-3xl text-white border-white py-2 px-8`}
             >
-              Continue
+              Submit
             </Button>
           )}
         </div>
+        <Box className={`absolute flex justify-center items-center bg-black/80 w-full h-screen ${loader ? 'block' : 'hidden'}`}>
+          <Loading/>
+        </Box>
       </Box>
     </>
   );
