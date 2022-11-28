@@ -29,7 +29,7 @@ export default function Landing() {
 
   const handleKeyPress = (e) => {
     if (e.key === "Enter") {
-      router.push("/123");
+      router.push(`https://www.google.com/search?q=${input}`);
     }
   };
 
