@@ -69,8 +69,9 @@ export default function Landing() {
             </IconButton>
           </Paper>
         </Box>
+        </Box>
+        {/* Footer */}
         <Footer />
-      </Box>
     </>
   );
 }

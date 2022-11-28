@@ -7,7 +7,7 @@ import Image from "next/image";
 
 export default function Footer() {
   return (
-    <Box variant="footer" className="flex  items-center absolute bottom-4 px-16 w-full" sx={{ color: "secondary.main" }}>
+    <Box variant="footer" className="flex left-0 overflow-hidden items-center absolute bottom-2 px-16 w-full" sx={{ color: "secondary.main" }}>
       <Box className="w-1/3">
         <Typography>Nattu Adnan (Unsplash)</Typography>
       </Box>
