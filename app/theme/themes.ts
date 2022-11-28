@@ -13,7 +13,7 @@ export const darkTheme = createTheme({
     },
     secondary: {
       main: neutral[90],
-      lightGray: neutral[30],
+      light: neutral[30],
     }
   },
 
