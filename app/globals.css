@@ -50,8 +50,7 @@ input:-internal-autofill-selected {
 .spinner-svg {
   animation: Rotate 1.6s linear 0s infinite forwards;
 }
-.css-julti5-MuiSwitch-root,
-.css-tnsvld-MuiSwitch-root {
+.switch>div>label>span:nth-child(1) {
   width: 52px;
   height: 27px !important;
 }

@@ -27,7 +27,8 @@ export const darkTheme = createTheme({
           }
         },
         track: {
-          display: 'none'
+          display: 'none',
+          height: 30,
         }
       }
     }
@@ -53,7 +54,8 @@ export const lightTheme = createTheme({
           color: "#1C1917"
         },
         track: {
-          display: 'none'
+          display: 'none',
+          height: 30,
         }
       }
     }

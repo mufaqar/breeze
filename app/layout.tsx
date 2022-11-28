@@ -18,6 +18,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     setUseDarkTheme(currentValue);
     setTheme(currentValue ? darkTheme : lightTheme);
   };
+  
 
   return (
     <html lang="en">
@@ -50,6 +51,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                         checked={useDarkTheme}
                         inputProps={{ "aria-label": "Dark Mode" }}
                         onChange={(target, value) => changeThemeHandler(target, value)}
+                        
                       ></Switch>
                     }
                     labelPlacement="start"
