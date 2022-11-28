@@ -53,12 +53,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                       ></Switch>
                     }
                     labelPlacement="start"
-                    label="Label"
+                    label=""
                     className="rounded-full"
                     sx={{ bgcolor: "secondary.main" }}
                   />
                   <Typography
-                    variant="span"
+
                     className="text-sm text-center font-normal block pl-7 mt-1"
                     sx={{ color: "secondary.main" }}
                   >
@@ -75,7 +75,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                     Sunny
                   </Typography>
                   <Typography
-                    variant="p"
+
                     sx={{ color: "secondary.main" }}
                     className="text-[12px] leading-tight flex justify-end"
                   >
