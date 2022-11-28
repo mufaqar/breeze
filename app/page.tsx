@@ -13,7 +13,7 @@ export default function Home() {
         <Button variant="text" className="text-red-500 bg-gray-200">
           Text
         </Button>
-        <Button variant="contained">Contained</Button>
+        <Button variant="contained" color="secondary" >Contained</Button>
         <Button variant="outlined">Outlined</Button>
       </Stack>
     </Grid>

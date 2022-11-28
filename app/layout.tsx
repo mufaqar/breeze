@@ -26,7 +26,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <ThemeProvider theme={theme}>
         <body id="__next">
           <CssBaseline />
-          <FormControlLabel
+          {/* <FormControlLabel
             control={
               <Switch
                 checked={useDarkTheme}
@@ -36,7 +36,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             }
             label="Dark Mode"
             labelPlacement="start"
-          />
+          /> */}
           {children}
         </body>
       </ThemeProvider>
