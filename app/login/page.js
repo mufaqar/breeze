@@ -11,7 +11,7 @@ import Link from "next/link";
 import Loading from "../components/loading";
 
 const initialValue = {
-  name: "123",
+  name: "Matt",
   email: "email@email.com",
   password: "password",
 };
@@ -24,8 +24,6 @@ export default function Login() {
   const [password, showPassword] = useState(true);
   const [loader, setloader] = useState(false);
   const [wrongCredentials, setWrongCredentials] = useState(false);
-  
-
 
   const handleStepOne = () => {
     setStepOne(true);
@@ -38,14 +36,13 @@ export default function Login() {
     setStepThree(false);
   };
   const handleStepThree = () => {
-    setloader(true)
+    setloader(true);
     setTimeout(() => {
-      setloader(false)
-      if(field.email != 'email@email.com' || field.password != 'password' ){
-        setWrongCredentials(true)
+      setloader(false);
+      if (field.email != "email@email.com" || field.password != "password") {
+        setWrongCredentials(true);
       }
-    }, 3000)
-
+    }, 3000);
   };
 
   return (
@@ -97,8 +94,12 @@ export default function Login() {
               sx={{ marginTop: "1rem", padding: "12px", color: "white", borders: "solid red" }}
             />
           </Box>
-          <p className={`text-white -mt-4 mb-8 text-sm ${field.email.includes(' ') ? 'block' : 'hidden'}`}>Emails may not include spaces.</p>
-          {field.name.length > 0 && field.email.includes(' ') ? '' : (
+          <p className={`text-white -mt-4 mb-8 text-sm ${field.email.includes(" ") ? "block" : "hidden"}`}>
+            Emails may not include spaces.
+          </p>
+          {field.name.length > 0 && field.email.includes(" ") ? (
+            ""
+          ) : (
             <Button
               variant="outlined"
               startIcon={<ArrowBackIosIcon />}
@@ -128,7 +129,7 @@ export default function Login() {
               sx={{ marginTop: "1rem", padding: "12px", color: "white", borders: "solid red" }}
               type={password ? "password" : "text"}
             />
-            
+
             <InputAdornment className="absolute right-0 pr-4">
               <IconButton aria-label="toggle password visibility" onClick={() => showPassword(!password)}>
                 {password ? (
@@ -139,22 +140,39 @@ export default function Login() {
               </IconButton>
             </InputAdornment>
           </Box>
-          {wrongCredentials && <p className="text-white -mt-2 text-center italic">The password you entered for <br/> the email {field.email} is’t right.</p>}
-          <p className={`text-white -mt-2 ${wrongCredentials && 'mt-0' } `}>Learn more in our Terms & <Link href="#" className="underline text-white">Privacy Policy.</Link></p>
-          <FormControlLabel control={<Checkbox style={{ color: "white" }} />} label="Sign up for the Weekly Newsletter" className="text-white -mt-4 mb-8"/>
+          {wrongCredentials && (
+            <p className="text-white -mt-2 text-center italic">
+              The password you entered for <br /> the email {field.email} is’t right.
+            </p>
+          )}
+          <p className={`text-white -mt-2 ${wrongCredentials && "mt-0"} `}>
+            Learn more in our Terms &{" "}
+            <Link href="#" className="underline text-white">
+              Privacy Policy.
+            </Link>
+          </p>
+          <FormControlLabel
+            control={<Checkbox style={{ color: "white" }} />}
+            label="Sign up for the Weekly Newsletter"
+            className="text-white -mt-4 mb-8"
+          />
           {field.name.length > 0 && (
             <Button
               variant="outlined"
               startIcon={<ArrowBackIosIcon />}
-              onClick={handleStepThree} 
+              onClick={handleStepThree}
               className={`rounded-3xl text-white border-white py-2 px-8`}
             >
               Submit
             </Button>
           )}
         </div>
-        <Box className={`absolute flex justify-center items-center bg-black/80 w-full h-screen ${loader ? 'block' : 'hidden'}`}>
-          <Loading/>
+        <Box
+          className={`absolute flex justify-center items-center bg-black/80 w-full h-screen ${
+            loader ? "block" : "hidden"
+          }`}
+        >
+          <Loading />
         </Box>
       </Box>
     </>
