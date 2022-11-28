@@ -6,65 +6,66 @@
 @import url("https://fonts.googleapis.com/icon?family=Material+Icons");
 
 /* fonts  */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap");
 
-body{
-    font-family: 'Inter', sans-serif;
+body {
+  font-family: "Inter", sans-serif;
 }
 
-.inputwrapper>div::before{
-    border-bottom:  2px solid white !important;
+.inputwrapper > div::before {
+  border-bottom: 2px solid white !important;
 }
 
 input:-internal-autofill-selected {
-    background-color: transparent !important;
+  background-color: transparent !important;
 }
 
 @keyframes ScaleInOut {
-    0% {
-        transform: scale(0.8);
-    }
+  0% {
+    transform: scale(0.8);
+  }
 
-    100% {
-        transform: scale(1.5);
-    }
+  100% {
+    transform: scale(1.5);
+  }
 }
 
 @keyframes Rotate {
-    0% {
-        transform: rotate(0deg);
-    }
-    100% {
-        transform: rotate(360deg);
-    }
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 .spinner {
-    width: 50px;
-    height: 50px;
-    border: 4px solid lightgray;
-    border-top-color: gray;
-    border-radius: 50%;
-    animation: Rotate 1.2s linear 0s infinite forwards;
+  width: 50px;
+  height: 50px;
+  border: 4px solid lightgray;
+  border-top-color: gray;
+  border-radius: 50%;
+  animation: Rotate 1.2s linear 0s infinite forwards;
 }
 .spinner-svg {
-    animation: Rotate 1.6s linear 0s infinite forwards;
+  animation: Rotate 1.6s linear 0s infinite forwards;
 }
-.css-julti5-MuiSwitch-root, .css-tnsvld-MuiSwitch-root {
-    width: 52px;
-    height: 27px !important;
+.css-julti5-MuiSwitch-root,
+.css-tnsvld-MuiSwitch-root {
+  width: 52px;
+  height: 27px !important;
 }
-.switch label span span span .css-8je8zh-MuiTouchRipple-root{
-display: none;
+.switch label span span span .css-8je8zh-MuiTouchRipple-root {
+  display: none;
 }
-.switch label span .css-1yjjitx-MuiSwitch-track{
-    display: none;
+.switch label span .css-1yjjitx-MuiSwitch-track {
+  display: none;
 }
-.switch .MuiSwitch-thumb{
-    margin-top: -5.5px;
-    margin-left: -3px;
+.switch .MuiSwitch-thumb {
+  margin-top: -5.5px;
+  margin-left: -3px;
 }
-.css-107w6bm-MuiButtonBase-root-MuiSwitch-switchBase.Mui-checked+.MuiSwitch-track,
-.css-10yoqb4-MuiButtonBase-root-MuiSwitch-switchBase.Mui-checked+.MuiSwitch-track{
-    display: none;
+.css-107w6bm-MuiButtonBase-root-MuiSwitch-switchBase.Mui-checked + .MuiSwitch-track,
+.css-10yoqb4-MuiButtonBase-root-MuiSwitch-switchBase.Mui-checked + .MuiSwitch-track {
+  display: none;
 }
