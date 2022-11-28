@@ -87,6 +87,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             {children}
           </Box>
           {/* xx header section  xx */}
+         
         </body>
       </ThemeProvider>
     </html>
