@@ -20,8 +20,6 @@ export default function Landing() {
           <SearchEngine/>
         </Box>
         </Box>
-        {/* Footer */}
-        <Footer />
     </>
   );
 }
