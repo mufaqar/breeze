@@ -3,6 +3,8 @@ const nextConfig = {
   experimental: {
     appDir: true,
   },
+  test: /\.svg$/,
+  use: ['@svgr/webpack'],
   
 }
 

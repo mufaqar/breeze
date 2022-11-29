@@ -7,6 +7,8 @@ import Filter from "../../public/assets/images/filter.png";
 import { useRouter } from "next/navigation";
 import Footer from "../components/footer";
 
+
+
 export default function Landing() {
   const [input, setInput] = useState();
   const router = useRouter();
