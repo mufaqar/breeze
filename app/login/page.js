@@ -49,8 +49,8 @@ export default function Login() {
     <>
       <Box
         component="main"
-        sx={{ backgroundImage: `url(${loginBg.src})` }}
-        className="h-screen relative w-full flex justify-center items-center bg-cover bg-no-repeat"
+        // sx={{ backgroundImage: `url(${loginBg.src})` }}
+        className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
       >
         {/* First Step */}
         <div className={`flex flex-col justify-between items-center ${stepOne ? "hidden" : "block"}`}>
@@ -167,14 +167,15 @@ export default function Login() {
             </Button>
           )}
         </div>
-        <Box
-          className={`absolute flex justify-center items-center bg-black/80 w-full h-screen ${
+        
+      </Box>
+      <Box
+          className={`fixed top-0 right-0 left-0 flex justify-center items-center bg-black/80 w-full h-screen ${
             loader ? "block" : "hidden"
           }`}
         >
           <Loading />
         </Box>
-      </Box>
     </>
   );
 }
