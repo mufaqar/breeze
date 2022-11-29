@@ -1,6 +1,6 @@
 "use client";
 
-import HomeComp from '../modules/home'
+import HomeComp from '../../src/modules/home'
 
 export default function Home() {
   return (

@@ -1,6 +1,5 @@
 import { Box, Typography } from "@mui/material";
 import React, { useState } from "react";
-import { useRouter } from "next/navigation";
 import Footer from "../components/footer";
 import SearchEngine from '../components/searchEngine'
 import Time from "../components/date-and-time/time"
