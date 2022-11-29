@@ -7,7 +7,7 @@ import Time from "../components/date-and-time/time"
 import DateComp from "../components/date-and-time/date";
 
 
-export default function Landing() {
+export default function HomeComp() {
 
   return (
     <>
