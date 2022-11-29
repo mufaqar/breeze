@@ -1,13 +1,12 @@
 import { Box, IconButton, Typography } from "@mui/material";
 import React from "react";
-import { SvgIcon } from "@mui/material";
-import sound from "../../public/assets/svg/sound.svg";
-import setting from "../../public/assets/svg/setting.svg";
+import sound from "../../../public/assets/svg/sound.svg";
+import setting from "../../../public/assets/svg/setting.svg";
 import Image from "next/image";
 
 export default function Footer() {
   return (
-    <Box variant="footer" className="flex left-0 overflow-hidden items-center absolute bottom-2 px-16 w-full" sx={{ color: "secondary.main" }}>
+    <Box variant="div" className="flex justify-between items-center wfull" sx={{ color: "secondary.main" }}>
       <Box className="w-1/3">
         <Typography>Nattu Adnan (Unsplash)</Typography>
       </Box>
@@ -21,7 +20,7 @@ export default function Footer() {
         </IconButton>
         <IconButton>
           <Image src={setting} alt="sound" width={25} height={25} />
-          <Typography sx={{color:'secondary.main'}} className="ml-2">Settings</Typography>
+          <Typography sx={{color:'secondary.main'}} className="pl-2">Settings</Typography>
         </IconButton>
       </Box>
     </Box>

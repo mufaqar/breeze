@@ -14,6 +14,7 @@ export const darkTheme = createTheme({
     secondary: {
       main: neutral[90],
       light: neutral[30],
+      contrastText: neutral[0],
     }
   },
 
@@ -43,6 +44,7 @@ export const lightTheme = createTheme({
     },
     secondary: {
       main: neutral[0],
+      contrastText: neutral[90],
     }
 
   },

@@ -1,11 +1,10 @@
 import { Box, Typography } from "@mui/material";
 import React, { useState } from "react";
-import { useRouter } from "next/navigation";
 import Footer from "../components/footer";
 import SearchEngine from '../components/searchEngine'
 import Time from "../components/date-and-time/time"
 import DateComp from "../components/date-and-time/date";
-
+import AppList from "../components/appList"
 
 export default function HomeComp() {
 
@@ -19,10 +18,10 @@ export default function HomeComp() {
           </Typography>
           <DateComp/>
           <SearchEngine/>
+          <AppList/>
         </Box>
         </Box>
-        {/* Footer */}
-        <Footer />
+        
     </>
   );
 }

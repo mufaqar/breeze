@@ -68,3 +68,31 @@ input:-internal-autofill-selected {
 .css-10yoqb4-MuiButtonBase-root-MuiSwitch-switchBase.Mui-checked + .MuiSwitch-track {
   display: none;
 }
+
+.brendlist{
+  background: rgba(255, 255, 255, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(4px);
+  border-radius: 12px;
+  min-width: 46px;
+  min-height: 46px;
+}
+.wfull{
+  width: 100vw;
+  padding: 0 64px;
+}
+.change-search-engine{
+  position: relative;
+  border-radius: 20px;
+}
+.change-search-engine::before{
+  position: absolute;
+  top:5px;
+  right:0;
+  width: 20px;
+  height: 20px;
+  background: red;
+}
+.change-search-engine p{
+  font-size: 14px !important;
+}
