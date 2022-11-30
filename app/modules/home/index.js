@@ -15,12 +15,12 @@ const HomeModule = () => {
                 <>
                     Item One sdf sdfjl
                 </>
-                <p>
+                <>
                     Item Two
-                </p>
-                <p>
+                </>
+                <>
                     Item Three
-                </p>
+                </>
             </TabsLayout>
         </>
     )
