@@ -1,12 +1,7 @@
 import { Box, Button, Typography } from "@mui/material";
 import Image from "next/image";
 import React from "react";
-import Dribbble from "../../../public/assets/images/dribbble.png";
-import Figma from "../../../public/assets/images/Figma.png";
-import Gmail from "../../../public/assets/images/Gmail.png";
-import Netflix from "../../../public/assets/images/netflix.png";
-import ProductHunt from "../../../public/assets/images/Product-Hunt.png";
-import Slack from "../../../public/assets/images/slack.png";
+import { Dribbble, Figma, Gmail, Netflix, ProductHunt, Slack } from '../../public/assets/export'
 
 const list = [
   {

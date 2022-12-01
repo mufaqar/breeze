@@ -9,7 +9,7 @@ export default function DateComp() {
     weekday: "long",
   };
   const event = new Date();
-  
+
   return (
     <Typography variant="span" className="block text-lg font-normal" sx={{ color: "secondary.main" }}>
       {new Intl.DateTimeFormat("en-US", Dateoptions).format(event)}

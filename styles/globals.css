@@ -12,7 +12,7 @@ body {
   font-family: "Inter", sans-serif;
 }
 
-.inputwrapper > div::before {
+.inputwrapper>div::before {
   border-bottom: 2px solid white !important;
 }
 
@@ -34,6 +34,7 @@ input:-internal-autofill-selected {
   0% {
     transform: rotate(0deg);
   }
+
   100% {
     transform: rotate(360deg);
   }
@@ -47,13 +48,16 @@ input:-internal-autofill-selected {
   border-radius: 50%;
   animation: Rotate 1.2s linear 0s infinite forwards;
 }
+
 .spinner-svg {
   animation: Rotate 1.6s linear 0s infinite forwards;
 }
+
 .switch>div>label>span:nth-child(1) {
   width: 52px;
   height: 27px !important;
 }
+
 /* .switch label span span span .css-8je8zh-MuiTouchRipple-root {
   display: none;
 }
@@ -64,12 +68,13 @@ input:-internal-autofill-selected {
   margin-top: -5.5px;
   margin-left: -3px;
 }
-.css-107w6bm-MuiButtonBase-root-MuiSwitch-switchBase.Mui-checked + .MuiSwitch-track,
-.css-10yoqb4-MuiButtonBase-root-MuiSwitch-switchBase.Mui-checked + .MuiSwitch-track {
+
+.css-107w6bm-MuiButtonBase-root-MuiSwitch-switchBase.Mui-checked+.MuiSwitch-track,
+.css-10yoqb4-MuiButtonBase-root-MuiSwitch-switchBase.Mui-checked+.MuiSwitch-track {
   display: none;
 }
 
-.brendlist{
+.brendlist {
   background: rgba(255, 255, 255, 0.25);
   border: 1px solid rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(4px);
@@ -77,22 +82,26 @@ input:-internal-autofill-selected {
   min-width: 46px;
   min-height: 46px;
 }
-.wfull{
+
+.wfull {
   width: 100vw;
   padding: 0 64px;
 }
-.change-search-engine{
+
+.change-search-engine {
   position: relative;
   border-radius: 20px;
 }
-.change-search-engine::before{
+
+.change-search-engine::before {
   position: absolute;
-  top:5px;
-  right:0;
+  top: 5px;
+  right: 0;
   width: 20px;
   height: 20px;
   background: red;
 }
-.change-search-engine p{
+
+.change-search-engine p {
   font-size: 14px !important;
 }

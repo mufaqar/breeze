@@ -1,18 +1,18 @@
 "use client";
 
-import "./globals.css";
-import { darkTheme, lightTheme } from "./theme/themes";
+import "../styles/globals.css";
+import { darkTheme, lightTheme } from "../src/theme/themes";
 
 import { ThemeProvider, CssBaseline, Switch, FormControlLabel, Box, Typography } from "@mui/material";
 import { ChangeEvent, useState } from "react";
 //import Header from "../app/components/header";
-import { loginBg } from "../public/assets";
+import { loginBg } from "../public/assets/export";
 import Image from "next/image";
-import sunny from "../public/assets/images/sun.png";
+import { sunny } from "../public/assets/export";
 import { usePathname } from "next/navigation";
 import { Provider } from "react-redux";
-import store from './store/store'
-import Footer from "./src/components/footer";
+import store from '../src/store/store'
+import Footer from "../src/components/footer";
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   let [useDarkTheme, setUseDarkTheme] = useState(false);

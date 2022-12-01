@@ -1,3 +1,5 @@
+"use client";
+
 import { Box, Typography } from "@mui/material";
 import React, { useState } from "react";
 import Footer from "../components/footer";

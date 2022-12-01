@@ -1,16 +1,10 @@
+"use client";
 import React, { useState } from "react";
-import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
-import Google from "../../../public/assets/images/google_brand.png";
-import Bing from "../../../public/assets/images/bing.png";
-import DuckDuckGo from "../../../public/assets/images/duckduckgo.png";
-import Filter from "../../../public/assets/images/filter.png";
 import Image from "next/image";
+import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
+import { Google, Bing, DuckDuckGo, Filter } from '../../public/assets/export'
 import { Box, IconButton, Paper, TextField, Typography } from "@mui/material";
 import CustomIconButton from "./iconButton";
-
-
-
-
 
 export default function SearchEngine() {
   const [input, setInput] = useState();
@@ -30,21 +24,21 @@ export default function SearchEngine() {
       <Box className="flex change-search-engine flex-col justify-start space-y-2">
         <Typography className="mb-2">Serach With</Typography>
 
-        <Box className="flex items-center cursor-pointer" onClick={()=>setChangeEngineLogo(Google)}>
+        <Box className="flex items-center cursor-pointer" onClick={() => setChangeEngineLogo(Google)}>
           <Image src={Google} alt="sound" width={20} height={20} />
           <Typography sx={{ color: "secondary.contrastText" }} className="pl-2">
             Google
           </Typography>
         </Box>
 
-        <Box className="flex items-center cursor-pointer" onClick={()=>setChangeEngineLogo(Bing)}>
+        <Box className="flex items-center cursor-pointer" onClick={() => setChangeEngineLogo(Bing)}>
           <Image src={Bing} alt="sound" width={20} height={20} />
           <Typography sx={{ color: "secondary.contrastText" }} className="pl-2">
             Bing
           </Typography>
         </Box>
 
-        <Box className="flex items-center cursor-pointer" onClick={()=>setChangeEngineLogo(DuckDuckGo)}>
+        <Box className="flex items-center cursor-pointer" onClick={() => setChangeEngineLogo(DuckDuckGo)}>
           <Image src={DuckDuckGo} alt="sound" width={20} height={20} />
           <Typography sx={{ color: "secondary.contrastText" }} className="pl-2">
             DuckDuckGo
@@ -62,7 +56,7 @@ export default function SearchEngine() {
     <>
       <Paper className="mt-6 p-[2px] rounded-full px-2 flex items-center">
         <IconButton onClick={HandleOpenSearchEng} className="min-w-[60px] ">
-          <Image src={changeEngineLogo} alt="google" width={20} height={20}/>
+          <Image src={changeEngineLogo} alt="google" width={20} height={20} />
           <KeyboardArrowDownIcon sx={{ color: "secondary.lightGray" }} />
         </IconButton>
         <TextField

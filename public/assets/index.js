@@ -1,1 +1,0 @@
-export {default as loginBg} from './images/login-bg.png'

@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { loginBg } from "../../public/assets";
+import { loginBg } from "../../public/assets/export";
 import { Box, Button, Checkbox, FormControlLabel, IconButton, Input, InputAdornment } from "@mui/material";
 import useForm from "../src/components/useForm";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
@@ -113,9 +113,8 @@ export default function Login() {
 
         {/* 3rd Step */}
         <div
-          className={` flex-col flex justify-between items-center ${
-            stepThree ? "hidden" : stepTwo ? "block" : "hidden"
-          }`}
+          className={` flex-col flex justify-between items-center ${stepThree ? "hidden" : stepTwo ? "block" : "hidden"
+            }`}
         >
           <span className="text-4xl text-white">what's your password</span>
           <Box className="border-2 relative border-white w-full inputwrapper flex flex-col justify-center items-center">
@@ -167,15 +166,14 @@ export default function Login() {
             </Button>
           )}
         </div>
-        
+
       </Box>
       <Box
-          className={`fixed top-0 right-0 left-0 flex justify-center items-center bg-black/80 w-full h-screen ${
-            loader ? "block" : "hidden"
+        className={`fixed top-0 right-0 left-0 flex justify-center items-center bg-black/80 w-full h-screen ${loader ? "block" : "hidden"
           }`}
-        >
-          <Loading />
-        </Box>
+      >
+        <Loading />
+      </Box>
     </>
   );
 }
