@@ -105,3 +105,6 @@ input:-internal-autofill-selected {
 .change-search-engine p {
   font-size: 14px !important;
 }
+._placeholder textarea{
+  color: white;
+}
