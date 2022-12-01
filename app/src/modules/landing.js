@@ -1,6 +1,7 @@
+"use client";
+
 import { Box, Typography } from "@mui/material";
-import React, { useState } from "react";
-import Footer from "../components/footer";
+import React from "react";
 import SearchEngine from '../components/searchEngine'
 import Time from "../components/date-and-time/time"
 import DateComp from "../components/date-and-time/date";
