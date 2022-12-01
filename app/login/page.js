@@ -8,7 +8,8 @@ import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import Link from "next/link";
-import Loading from "../src/components/loading";
+import Loading from "../../src/components/loading";
+
 
 const initialValue = {
   name: "Matt",
@@ -111,7 +112,7 @@ export default function Login() {
           )}
         </div>
 
-        {/* 3rd Step */}
+        {/*  3rd Step  */}
         <div
           className={` flex-col flex justify-between items-center ${stepThree ? "hidden" : stepTwo ? "block" : "hidden"
             }`}
