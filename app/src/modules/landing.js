@@ -12,14 +12,14 @@ export default function Landing() {
     <>
       <Box component="main" className="absolute top-1/2 left-1/2 transform -translate-x-1/2 w-full -translate-y-1/2">
         <Box className="flex justify-center flex-col items-center">
-          <Time/>
+          <Time />
           <Typography className="text-[32px] mt-4 font-medium" sx={{ color: "secondary.main" }}>
             Good evening, {`ilhhasap`}
           </Typography>
-          <DateComp/>
-          <SearchEngine/>
+          <DateComp />
+          <SearchEngine />
         </Box>
-        </Box>
+      </Box>
     </>
   );
 }
