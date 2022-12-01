@@ -17,7 +17,7 @@ export default function Soundscap({ state }) {
         </Box>
         <Box className="grid grid-cols-4 mt-2 gap-4 justify-center items-center p-4 pb-6">
           {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].map((item, i) => (
-            <Box className="flex justify-center items-center flex-col cursor-pointer">
+            <Box className="flex justify-center items-center flex-col cursor-pointer" key={i}>
               <DirectionsSubwayIcon />
               <Typography className="text-[12px] mt-2" sx={{ color: "secondary.contrastText" }}>
                 Campfire

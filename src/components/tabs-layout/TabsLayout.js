@@ -72,7 +72,7 @@ const TabsLayout = (props) => {
         </Stack>
         {panelList.map((tabPanel, index) => (
 
-          <Tab sx={{
+          <Tab key={index} sx={{
             display: "flex", flexDirection: "row", alignItems: "center", justifyContent: isFullWidthPanel ? "start" : "center", gap: 1, p: 1, borderRadius: "8px", mx: 2, my: 0.5, border: "solid red", minHeight: "auto", minWidth: !isFullWidthPanel && "auto",
           }}
             icon={
@@ -92,7 +92,7 @@ const TabsLayout = (props) => {
 
       {
         children.map((item, index) => (
-          <TabPanel value={value} index={index + 1}>
+          <TabPanel value={value} index={index + 1} key={index}>
             {item}
           </TabPanel>
         ))

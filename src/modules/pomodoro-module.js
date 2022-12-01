@@ -2,7 +2,7 @@ import { Box, Button, TextField, Typography } from "@mui/material";
 import SearchEngine from "../components/searchEngine";
 import Time from "../components/date-and-time/time";
 import DateComp from "../components/date-and-time/date";
-import { useState } from "react";
+import React, { useState } from "react";
 import SettingsIcon from "@mui/icons-material/Settings";
 import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 
@@ -13,22 +13,6 @@ export default function () {
     setOpen(id);
   };
 
-  const styles = {
-    'input-label': {
-      textOverflow: 'ellipsis',
-      whiteSpace: 'nowrap',
-      overflow: 'hidden',
-      width: '100%',
-      color: 'red'
-    },
-  
-    'input': {
-      '&::placeholder': {
-        textOverflow: 'ellipsis !important',
-        color: 'blue'
-      }
-    }
-  };
 
   return (
     <>
