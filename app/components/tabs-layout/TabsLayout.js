@@ -64,7 +64,7 @@ const TabsLayout = (props) => {
           borderRight: 1, borderColor: 'divider', width: isFullWidthPanel ? "218px" : "100px",
         }}
       >
-        <Stack direction="row" justifyContent="space-between" alignItems="center" mt={2} mx={isFullWidthPanel ? 2 : 1}>
+        <Stack direction="row" justifyContent="space-between" alignItems="center" mt={3} mx={isFullWidthPanel ? 2 : 1}>
           <Typography variant={isFullWidthPanel ? 'h5' : 'h6'} fontWeight={600} textTransform="capitalize">{panelTitle}</Typography>
           <Stack alignItems="center" sx={{ cursor: "pointer" }} onClick={() => setIsFullWidthPanel(!isFullWidthPanel)}>
             {isFullWidthPanel ? <KeyboardDoubleArrowLeft sx={{ color: "gray" }} /> : <KeyboardDoubleArrowRight sx={{ color: "gray" }} />}
@@ -72,15 +72,21 @@ const TabsLayout = (props) => {
         </Stack>
         {panelList.map((tabPanel, index) => (
 
-          <Tab sx={{ display: "flex", flexDirection: "row", justifyContent: isFullWidthPanel ? "start" : "center", gap: 2 }}
+          <Tab sx={{
+            display: "flex", flexDirection: "row", alignItems: "center", justifyContent: isFullWidthPanel ? "start" : "center", gap: 1, p: 1, borderRadius: "8px", mx: 2, my: 0.5, border: "solid red", minHeight: "auto", minWidth: !isFullWidthPanel && "auto",
+          }}
             icon={
               // <SvgIcon component={tabPanel.icon} />
-              <Image style={{ color: "red" }} src={tabPanel.icon} alt={tabPanel.title} width={isFullWidthPanel ? 20 : 25} height={isFullWidthPanel ? 20 : 30} />
+              <Image style={{ color: "red", margin: 0 }} src={tabPanel.icon} alt={tabPanel.title} width={isFullWidthPanel ? 20 : 25} height={isFullWidthPanel ? 20 : 25} />
             }
-            label={isFullWidthPanel && tabPanel.title}
+            label={
+              <Stack flex={1} direction="row" justifyContent="space-between" alignItems="center">
+                {isFullWidthPanel && <Typography textTransform="capitalize" fontWeight={500}>{tabPanel.title}</Typography>}
+                <Typography backgroundColor="#F5F5F5" color="#78716C" py={0.25} px={0.5}>{tabPanel.value}</Typography>
+              </Stack>
+            }
             {...a11yProps((index))}
           />
-
         ))}
       </Tabs>
 
