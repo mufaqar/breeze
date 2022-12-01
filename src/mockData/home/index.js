@@ -1,19 +1,20 @@
-import { HomeIcon, CalenderIcon, TaskCompletedIcon } from '../../../../public/assets/export'
+// import { HomeIcon, CalenderIcon, TaskCompletedIcon } from '../../../../public/assets/export'
+import ico from '../../../public/assets/images/sun.png'
 export const homeModuleData = {
     panelTitle: "todo",
     panelList: [
         {
-            icon: HomeIcon,
+            icon: ico,
             title: "home",
             value: 3
         },
         {
-            icon: CalenderIcon,
+            icon: ico,
             title: "todo",
             value: 2
         },
         {
-            icon: TaskCompletedIcon,
+            icon: ico,
             title: "completed",
             value: 3
         },
