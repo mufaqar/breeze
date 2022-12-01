@@ -1,9 +1,9 @@
 "use client";
 
-import Landing from '../modules/landing'
+import HomeComp from '../src/modules/home'
 
 export default function Home() {
   return (
-    <Landing />
+    <HomeComp />
   );
 }

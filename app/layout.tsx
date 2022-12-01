@@ -12,6 +12,7 @@ import sunny from "../public/assets/images/sun.png";
 import { usePathname } from "next/navigation";
 import { Provider } from "react-redux";
 import store from './store/store'
+import Footer from "./src/components/footer";
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   let [useDarkTheme, setUseDarkTheme] = useState(false);
@@ -87,10 +88,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                   </Box>
                 </Box>
               )}
+              {/* xx header section  xx */}
 
               {children}
             </Box>
-            {/* xx header section  xx */}
+            {pathname != "/login" && (<footer className="absolute bottom-2"> <Footer /> </footer>)}
           </body>
         </Provider>
       </ThemeProvider>
