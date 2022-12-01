@@ -6,17 +6,17 @@ import React, { useState } from "react";
 import SettingsIcon from "@mui/icons-material/Settings";
 import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 
-export default function () {
+
+export default function PomodoroModule() {
   const [open, setOpen] = useState(1);
 
   const ChangeTabs = (id) => {
     setOpen(id);
   };
 
-
   return (
     <>
-      <Box component="main" className="absolute top-1/2 left-1/2 transform -translate-x-1/2 w-full -translate-y-1/2">
+    <Box component="main" className="absolute top-1/2 left-1/2 transform -translate-x-1/2 w-full -translate-y-1/2">
         <Box className="flex justify-center flex-col items-center">
           <Box component="section" className="flex items-center space-x-4 mb-3">
             <Box
@@ -86,5 +86,5 @@ export default function () {
         </Box>
       </Box>
     </>
-  );
+  )
 }
