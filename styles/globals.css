@@ -108,3 +108,21 @@ input:-internal-autofill-selected {
 ._placeholder textarea{
   color: white;
 }
+._textwhite input{
+  color: white !important;
+}
+.taskList::-webkit-scrollbar {
+  width: 4px;
+}
+.taskList::-webkit-scrollbar-track {
+  background: none; 
+}
+.taskList::-webkit-scrollbar-thumb {
+  background: #fff; 
+  height: 2rem;
+  border-radius: 10px;
+}
+._list svg{
+  width: 2rem !important;
+  height: 2rem !important;
+}
