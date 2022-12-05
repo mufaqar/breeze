@@ -6,6 +6,8 @@ import { Google, Bing, DuckDuckGo, Filter } from '../../public/assets/export'
 import { Box, IconButton, Paper, TextField, Typography } from "@mui/material";
 import CustomIconButton from "./iconButton";
 
+
+
 export default function SearchEngine() {
   const [input, setInput] = useState();
   const [open, setOpen] = useState(false);
@@ -17,28 +19,31 @@ export default function SearchEngine() {
     }
   };
 
-  console.log(changeEngineLogo)
+  const LogoChange = (e) =>{
+    setChangeEngineLogo(e)
+    setOpen(false)
+  }
 
   const ChangeSearchEngine = () => {
     return (
       <Box className="flex change-search-engine flex-col justify-start space-y-2">
         <Typography className="mb-2">Serach With</Typography>
 
-        <Box className="flex items-center cursor-pointer" onClick={() => setChangeEngineLogo(Google)}>
+        <Box className="flex items-center cursor-pointer" onClick={() => LogoChange(Google)}>
           <Image src={Google} alt="sound" width={20} height={20} />
           <Typography sx={{ color: "secondary.contrastText" }} className="pl-2">
             Google
           </Typography>
         </Box>
 
-        <Box className="flex items-center cursor-pointer" onClick={() => setChangeEngineLogo(Bing)}>
+        <Box className="flex items-center cursor-pointer" onClick={() => LogoChange(Bing)}>
           <Image src={Bing} alt="sound" width={20} height={20} />
           <Typography sx={{ color: "secondary.contrastText" }} className="pl-2">
             Bing
           </Typography>
         </Box>
 
-        <Box className="flex items-center cursor-pointer" onClick={() => setChangeEngineLogo(DuckDuckGo)}>
+        <Box className="flex items-center cursor-pointer" onClick={() => LogoChange(DuckDuckGo)}>
           <Image src={DuckDuckGo} alt="sound" width={20} height={20} />
           <Typography sx={{ color: "secondary.contrastText" }} className="pl-2">
             DuckDuckGo
@@ -55,10 +60,10 @@ export default function SearchEngine() {
   return (
     <>
       <Paper className="mt-6 p-[2px] rounded-full px-2 flex items-center">
-        <IconButton onClick={HandleOpenSearchEng} className="min-w-[60px] ">
+        <Box onClick={HandleOpenSearchEng} className="min-w-[60px]  flex justify-center items-center">
           <Image src={changeEngineLogo} alt="google" width={20} height={20} />
           <KeyboardArrowDownIcon sx={{ color: "secondary.lightGray" }} />
-        </IconButton>
+        </Box>
         <TextField
           type="text"
           className=" bg-transparent w-[360px] placeholder:text-sm placeholder:text-[#A3A3A3]"
@@ -77,9 +82,8 @@ export default function SearchEngine() {
         </IconButton>
 
         {open && (
-          <Paper className="fixed -bottom-12 p-3 z-10">
-            {" "}
-            <ChangeSearchEngine />{" "}
+          <Paper className={`fixed -bottom-[150px] p-3 z-10`} sx={{borderRadius: 2}}>
+            <ChangeSearchEngine />
           </Paper>
         )}
       </Paper>

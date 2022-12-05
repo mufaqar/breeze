@@ -6,7 +6,6 @@ import SearchEngine from '../components/searchEngine'
 import Time from "../components/date-and-time/time"
 import DateComp from "../components/date-and-time/date";
 
-
 export default function Landing() {
 
   return (
@@ -15,7 +14,7 @@ export default function Landing() {
         <Box className="flex justify-center flex-col items-center">
           <Time />
           <Typography className="text-[32px] mt-4 font-medium" sx={{ color: "secondary.main" }}>
-            Good evening, {`ilhhasap`}
+            Good evening, {`ilhhasap`}  
           </Typography>
           <DateComp />
           <SearchEngine />
