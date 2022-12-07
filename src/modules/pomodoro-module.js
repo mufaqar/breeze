@@ -1,14 +1,31 @@
-import { Box, Button, Checkbox, FormControlLabel, Paper, TextField, Typography } from "@mui/material";
-import SearchEngine from "../components/searchEngine";
+import {
+  Box,
+  Button,
+  Checkbox,
+  FormControl,
+  FormControlLabel,
+  InputAdornment,
+  Modal,
+  OutlinedInput,
+  Paper,
+  Switch,
+  TextField,
+  Typography,
+} from "@mui/material";
 import Time from "../components/date-and-time/time";
-import DateComp from "../components/date-and-time/date";
 import React, { useState } from "react";
 import SettingsIcon from "@mui/icons-material/Settings";
 import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import RemoveIcon from "@mui/icons-material/Remove";
 import AddIcon from "@mui/icons-material/Add";
-
+import Pause from "../../public/assets/svg/pause.svg";
+import Stop from "../../public/assets/svg/stop.svg";
+import Restart from "../../public/assets/svg/restart.svg";
+import Tick from "../../public/assets/svg/tick.svg";
+import Delete from "../../public/assets/svg/delete.svg";
+import Pen from "../../public/assets/svg/pen.svg";
+import ClearIcon from "@mui/icons-material/Clear";
 
 export default function PomodoroModule() {
   const [open, setOpen] = useState(1);
@@ -16,7 +33,26 @@ export default function PomodoroModule() {
   const [task, setTask] = useState("");
   const [taskList, setTaskList] = useState([]);
   const [showInput, setShowInput] = useState(true);
-  const [editList, setEditlist] = useState(false);
+  const [editList, setEditlist] = useState(null);
+  const [start, setStart] = useState(false);
+  const [clearTask, setClearTask] = useState(false);
+  const [openModel, setOpenModel] = useState(false);
+
+  const style = {
+    position: "absolute",
+    top: "50%",
+    left: "50%",
+    transform: "translate(-50%, -50%)",
+    width: "526px",
+    bgcolor: "background.paper",
+    // border: '2px solid #000',
+    boxShadow: 24,
+    borderRadius: "12px",
+    p: "24px",
+  };
+
+  const handleOpen = () => setOpenModel(true);
+  const handleClose = () => setOpenModel(false);
 
   const ChangeTabs = (id) => {
     setOpen(id);
@@ -29,17 +65,23 @@ export default function PomodoroModule() {
     setShowInput(true);
   };
 
+  const handleEditLIst = (id) => {
+    if (editList === id) {
+      return setEditlist(null);
+    }
+    return setEditlist(id);
+  };
+
   // taskList component
   const TaskList = ({ taskList }) => {
-    console.log("🚀 ~ file: pomodoro-module.js:31 ~ TaskList ~ taskList", taskList);
     return (
-      <Box className="max-h-[150px] overflow-y-scroll taskList mt-4">
+      <Box className="relative overflow-y-scroll max-h-[162px] taskList mt-4">
         {taskList.map((list, i) => (
-          <Box className="bg-white/25 backdrop-blur-[1px] px-3 relative py-[6px] mt-2 first:mt-0 rounded-lg mr-2" key={i}>
+          <Box className="relative mt-2 " key={i}>
             <Box
               key={i}
               sx={{ color: "secondary.main" }}
-              className="text-sm font-normal flex justify-between items-center"
+              className="text-sm font-normal flex justify-between items-center bg-white/25  backdrop-blur-[1px] px-3 py-[6px] first:mt-0 rounded-lg mr-2"
             >
               <FormControlLabel
                 value="end"
@@ -53,22 +95,65 @@ export default function PomodoroModule() {
                 <MoreVertIcon
                   sx={{ color: "secondary.main" }}
                   className="cursor-pointer"
-                  onClick={() => setEditlist(!editList)}
+                  onClick={() => handleEditLIst(i)}
                 />
               </Box>
             </Box>
-            <Paper className={`absolute -bottom-6 z- right-0 ${editList ? "block" : "hidden"} `}>123</Paper>
+            {editList === i && (
+              <Box className="absolute right-52 top-12 ">
+                <EditBtn text1="Edit task" text2="Delete task" icon1={<Pen />} icon2={<Delete />} style="absolute" />
+              </Box>
+            )}
           </Box>
         ))}
       </Box>
     );
   };
 
+  const PlayPauseBtn = ({ title, icon, padding }) => {
+    return (
+      <Button
+        variant="contained"
+        startIcon={icon}
+        className={`rounded-full py-[10px] font-semibold text-base capitalize ${padding}`}
+        sx={{ color: "secondary.contrastText", backgroundColor: "secondary.main" }}
+        onClick={() => setStart(!start)}
+      >
+        {title}
+      </Button>
+    );
+  };
+
+  const EditBtn = ({ icon1, icon2, text1, text2, style }) => {
+    return (
+      <Paper sx={{ color: "secondary.main", borderRadius: "10px" }} className={` z-10 ${style} block`}>
+        <Box
+          className="flex items-center w-[180px] cursor-pointer p-2"
+          sx={{ borderBottom: 1, borderColor: "primary.light" }}
+        >
+          {icon1}
+          <Typography className="text-sm font-normal ml-2" sx={{ color: "secondary.contrastText" }}>
+            {text1}
+          </Typography>
+        </Box>
+        <Box className="flex cursor-pointer items-center p-2">
+          {icon2}
+          <Typography className="text-sm font-normal ml-2" sx={{ color: "secondary.contrastText" }}>
+            {text2}
+          </Typography>
+        </Box>
+      </Paper>
+    );
+  };
+
   return (
     <>
-      <Box component="main" className="absolute top-1/2 left-1/2 transform -translate-x-1/2 w-full -translate-y-1/2">
+      <Box
+        component="main"
+        className="absolute top-1/2 left-1/2 transform min-h-[575px] mt-8 -translate-x-1/2 w-full -translate-y-1/2"
+      >
         <Box className="flex justify-center flex-col items-center">
-          <Box component="section" className="flex items-center space-x-4 mb-3">
+          <Box component="section" className="flex items-center space-x-4 ">
             <Box
               variant="outlined"
               style={{ borderColor: "secondary.main" }}
@@ -102,27 +187,34 @@ export default function PomodoroModule() {
             </Box>
           </Box>
           <Time />
-          <Box className="flex items-center space-x-5 mt-2">
-            <Button
-              variant="contained"
-              startIcon={<PlayArrowIcon />}
-              className="rounded-full px-16 font-semibold text-base capitalize"
-              sx={{ color: "secondary.contrastText", backgroundColor: "secondary.main" }}
-            >
-              Start
-            </Button>
-            <SettingsIcon sx={{ color: "secondary.main" }} className="cursor-pointer" />
-          </Box>
+          {!start ? (
+            <Box className="flex items-center space-x-5 mt-1">
+              <PlayPauseBtn title="Start" icon={<PlayArrowIcon />} padding="px-12" />
+              <SettingsIcon sx={{ color: "secondary.main" }} className="cursor-pointer" onClick={handleOpen} />
+            </Box>
+          ) : (
+            <Box className="flex items-center space-x-5 mt-2">
+              <PlayPauseBtn title="Pause" icon={<Pause />} padding="px-8" />
+              <Box className="bg-white/25 backdrop-blur-[1px] cursor-pointer p-[14px] rounded-full flex justify-center items-center">
+                <Stop />
+              </Box>
+              <Box className="bg-white/25 backdrop-blur-[1px] cursor-pointer p-[12px] rounded-full flex justify-center items-center">
+                <Restart />
+              </Box>
+              <SettingsIcon sx={{ color: "secondary.main" }} className="cursor-pointer" />
+            </Box>
+          )}
+
           <Typography
             className="text-sm font-normal mt-4"
             sx={{ color: "secondary.main" }}
           >{`#0 Time to focus!`}</Typography>
-          <Box className="mt-4 w-[400px]">
-            <Box className="flex justify-between items-center">
+          <Box className="mt-4 w-[430px]">
+            <Box className="flex justify-between pr-5 items-center">
               <Typography className="text-2xl font-medium text-left" sx={{ color: "secondary.main" }}>
                 Task
               </Typography>
-              <Box className="flex items-center">
+              <Box className="flex items-center relative">
                 {taskList.length > 1 && (
                   <Button
                     variant="outlined"
@@ -135,7 +227,20 @@ export default function PomodoroModule() {
                   </Button>
                 )}
 
-                <MoreVertIcon sx={{ color: "secondary.main" }} className="cursor-pointer" />
+                <MoreVertIcon
+                  sx={{ color: "secondary.main" }}
+                  className="cursor-pointer"
+                  onClick={() => setClearTask(!clearTask)}
+                />
+                {clearTask && (
+                  <EditBtn
+                    text1="Clear finished task"
+                    text2="Clear all task"
+                    icon1={<Tick />}
+                    icon2={<Delete />}
+                    style="absolute top-10 right-0"
+                  />
+                )}
               </Box>
             </Box>
             {showInput && <TaskList taskList={taskList} />}
@@ -145,7 +250,7 @@ export default function PomodoroModule() {
                 id="standard-basic"
                 focused
                 color="secondary"
-                className={`w-full mt-5 _placeholder`}
+                className={`w-full pr-4 mt-5 z-0 _placeholder`}
                 placeholder="Write a new task"
                 variant="standard"
                 multiline
@@ -207,6 +312,109 @@ export default function PomodoroModule() {
           </div>
         </Box>
       </Box>
+
+      <Paper>
+        <Modal
+          open={openModel}
+          onClose={handleClose}
+          aria-labelledby="modal-modal-title"
+          aria-describedby="modal-modal-description"
+        >
+          <Box sx={style}>
+            <Box className="flex justify-between items-center">
+              <Typography component="h5" className="text-2xl font-bold" sx={{ color: "secondary.contrastText" }}>
+                Settings
+              </Typography>
+              <ClearIcon className="cursor-pointer" onClick={handleClose} />
+            </Box>
+            <Typography
+              component="h6"
+              className="text-base font-semibold mt-8"
+              sx={{ color: "secondary.contrastText" }}
+            >
+              Settings
+            </Typography>
+            <Box className="grid grid-cols-3 gap-2 mt-4">
+              <FormControl variant="outlined">
+                <Typography className="text-base font-normal mb-2" sx={{ color: "secondary.contrastText" }}>
+                  Pomodoro
+                </Typography>
+                <OutlinedInput
+                  id="outlined-adornment-weight"
+                  // value={values.weight}
+                  // onChange={handleChange("weight")}
+                  endAdornment={<InputAdornment position="end">minutes</InputAdornment>}
+                  aria-describedby="outlined-weight-helper-text"
+                  inputProps={{
+                    "aria-label": "minutes",
+                  }}
+                />
+              </FormControl>
+              <FormControl variant="outlined">
+                <Typography className="text-base font-normal mb-2" sx={{ color: "secondary.contrastText" }}>
+                  Short Break
+                </Typography>
+                <OutlinedInput
+                  id="outlined-adornment-weight"
+                  // value={values.weight}
+                  // onChange={handleChange("weight")}
+                  endAdornment={<InputAdornment position="end">minutes</InputAdornment>}
+                  aria-describedby="outlined-weight-helper-text"
+                  inputProps={{
+                    "aria-label": "minutes",
+                  }}
+                />
+              </FormControl>
+              <FormControl variant="outlined">
+                <Typography className="text-base font-normal mb-2" sx={{ color: "secondary.contrastText" }}>
+                  Long Break
+                </Typography>
+                <OutlinedInput
+                  id="outlined-adornment-weight"
+                  // value={values.weight}
+                  // onChange={handleChange("weight")}
+                  endAdornment={<InputAdornment position="end">minutes</InputAdornment>}
+                  aria-describedby="outlined-weight-helper-text"
+                  inputProps={{
+                    "aria-label": "minutes",
+                  }}
+                />
+              </FormControl>
+            </Box>
+            <Box className="pt-[1px] my-6" sx={{ backgroundColor: "primary.light" }}></Box>
+            <Box className="flex justify-between item-center">
+              <Typography component="h4" className="text-base font-semibold" sx={{ color: "secondary.contrastText" }}>
+                Auto start breaks
+              </Typography>
+              <input class="mui-switch" type="checkbox"></input>
+            </Box>
+            <Box className="flex justify-between item-center mt-2">
+              <Typography component="h4" className="text-base font-semibold" sx={{ color: "secondary.contrastText" }}>
+                Auto start pomodoros
+              </Typography>
+              <input class="mui-switch" type="checkbox"></input>
+            </Box>
+            <Box className="pt-[1px] my-6" sx={{ backgroundColor: "primary.light" }}></Box>
+            <Box className="flex justify-between item-center ">
+              <Typography component="h4" className="text-base font-semibold w-10/12 flex justify-start items-center" sx={{ color: "secondary.contrastText" }}>
+                Long break interval
+              </Typography>
+              <FormControl variant="outlined" className="w-2/12">
+                <OutlinedInput
+                  id="outlined-adornment-weight"
+                  // value={values.weight}
+                  // onChange={handleChange("weight")}
+                  aria-describedby="outlined-weight-helper-text"
+                  inputProps={{
+                    "aria-label": "minutes",
+                  }}
+                />
+              </FormControl>
+            </Box>
+            <Button  className="w-full font-semibold text-white bg-[#3F9BFC] hover:bg-blue-500 text-base rounded-full mt-6 p-3">Save</Button>
+          </Box>
+        </Modal>
+      </Paper>
     </>
   );
 }

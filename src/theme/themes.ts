@@ -9,7 +9,8 @@ export const darkTheme = createTheme({
   palette: {
     mode: "dark",
     primary: {
-      main: '#3F9BFC'
+      main: '#3F9BFC',
+      light: neutral[20],
     },
     secondary: {
       main: neutral[90],
@@ -40,7 +41,9 @@ export const lightTheme = createTheme({
   palette: {
     mode: "light",
     primary: {
-      main: '#3F9BFC'
+      main: '#3F9BFC',
+      /* It's a color that is used for the background of the switch. */
+      light: neutral[20],
     },
     secondary: {
       main: neutral[0],
