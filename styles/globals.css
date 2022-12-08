@@ -8,9 +8,10 @@
 /* fonts  */
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap");
 
-body {
-  font-family: "Inter", sans-serif;
+body, html, *,p,span, strong,a, h1, h2, h3, h4, h5, h6, li{
+  font-family: "Inter", sans-serif !important;
 }
+
 
 .inputwrapper>div::before {
   border-bottom: 2px solid white !important;

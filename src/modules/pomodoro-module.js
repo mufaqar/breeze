@@ -26,6 +26,70 @@ import Tick from "../../public/assets/svg/tick.svg";
 import Delete from "../../public/assets/svg/delete.svg";
 import Pen from "../../public/assets/svg/pen.svg";
 import ClearIcon from "@mui/icons-material/Clear";
+import styled from "@emotion/styled";
+
+const BpIcon = styled("span")(({ theme }) => ({
+  borderRadius: 6,
+  width: 22,
+  height: 22,
+  boxShadow:
+    theme.palette.mode === "dark"
+      ? "0 0 0 1px rgb(16 22 26 / 40%)"
+      : "inset 0 0 0 1px rgba(16,22,26,.2), inset 0 -1px 0 rgba(16,22,26,.1)",
+  backgroundColor: "transparent",
+  ".Mui-focusVisible &": {
+    outline: "2px auto rgba(19,124,189,.6)",
+    outlineOffset: 2,
+  },
+  "input:hover ~ &": {
+    backgroundColor: theme.palette.mode === "dark" ? "#30404d" : "#ebf1f5",
+  },
+  "input:disabled ~ &": {
+    boxShadow: "none",
+    background: theme.palette.mode === "dark" ? "rgba(57,75,89,.5)" : "rgba(206,217,224,.5)",
+  },
+}));
+
+const BpCheckedIcon = styled(BpIcon)({
+  backgroundColor: "#3F9BFC",
+  backgroundImage: "linear-gradient(180deg,hsla(0,0%,100%,.1),hsla(0,0%,100%,0))",
+  boxShadow: "none",
+  "&:before": {
+    display: "block",
+    width: 22,
+    height: 22,
+    backgroundImage:
+      "url(\"data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath" +
+      " fill-rule='evenodd' clip-rule='evenodd' d='M12 5c-.28 0-.53.11-.71.29L7 9.59l-2.29-2.3a1.003 " +
+      "1.003 0 00-1.42 1.42l3 3c.18.18.43.29.71.29s.53-.11.71-.29l5-5A1.003 1.003 0 0012 5z' fill='%23fff'/%3E%3C/svg%3E\")",
+    content: '""',
+  },
+  "input:hover ~ &": {
+    backgroundColor: "#106ba3",
+  },
+});
+
+// Inspired by blueprintjs
+function BpCheckbox(props) {
+  return (
+    <FormControlLabel
+      control={
+        <Checkbox
+          sx={{
+            "&:hover": { bgcolor: "transparent" },
+          }}
+          disableRipple
+          color="default"
+          checkedIcon={<BpCheckedIcon />}
+          icon={<BpIcon />}
+          inputProps={{ "aria-label": "Checkbox demo" }}
+          {...props}
+        />
+      }
+      label={props.labels}
+    />
+  );
+}
 
 export default function PomodoroModule() {
   const [open, setOpen] = useState(1);
@@ -75,7 +139,7 @@ export default function PomodoroModule() {
   // taskList component
   const TaskList = ({ taskList }) => {
     return (
-      <Box className="relative overflow-y-scroll max-h-[162px] taskList mt-4">
+      <Box className="relative overflow-y-scroll overflow-x-hidden max-h-[162px] taskList mt-4">
         {taskList.map((list, i) => (
           <Box className="relative mt-2 " key={i}>
             <Box
@@ -83,13 +147,7 @@ export default function PomodoroModule() {
               sx={{ color: "secondary.main" }}
               className="text-sm font-normal flex justify-between items-center bg-white/25  backdrop-blur-[1px] px-3 py-[6px] first:mt-0 rounded-lg mr-2"
             >
-              <FormControlLabel
-                value="end"
-                control={<Checkbox sx={{ color: "secondary.main" }} />}
-                label={list.task}
-                labelPlacement="end"
-                sx={{ color: "secondary.main" }}
-              />
+              <BpCheckbox label={list.task} />
               <Box className="flex items-center space-x-2">
                 <Typography>1/{list.estValue}</Typography>
                 <MoreVertIcon
@@ -148,11 +206,8 @@ export default function PomodoroModule() {
 
   return (
     <>
-      <Box
-        component="main"
-        className="absolute top-1/2 left-1/2 transform min-h-[575px] mt-8 -translate-x-1/2 w-full -translate-y-1/2"
-      >
-        <Box className="flex justify-center flex-col items-center">
+      <Box component="main" className="absolute top-1/2 left-1/2 transform -translate-x-1/2 w-full -translate-y-1/2">
+        <Box className="flex relative justify-center flex-col items-center">
           <Box component="section" className="flex items-center space-x-4 ">
             <Box
               variant="outlined"
@@ -250,7 +305,7 @@ export default function PomodoroModule() {
                 id="standard-basic"
                 focused
                 color="secondary"
-                className={`w-full pr-4 mt-5 z-0 _placeholder`}
+                className={`w-full pr-4 mt-2 z-0 _placeholder`}
                 placeholder="Write a new task"
                 variant="standard"
                 multiline
@@ -260,8 +315,8 @@ export default function PomodoroModule() {
             </Box>
           </Box>
 
-          <div className={task.length > 0 ? "block" : "hidden"}>
-            <Box className="mt-2 flex justify-between items-center w-[400px]">
+          <div className={task.length > 0 ? "block absolute -bottom-24" : "hidden"}>
+            <Box className="mt-2 flex justify-between items-center w-[430px] pr-5">
               <Typography sx={{ color: "secondary.main" }} className="font-normal text-base">
                 Est Pomodoros
               </Typography>
@@ -290,7 +345,7 @@ export default function PomodoroModule() {
               </Box>
             </Box>
 
-            <Box className="flex justify-between w-[400px]">
+            <Box className="flex justify-between w-[430px] pr-5">
               <Button
                 variant="outlined"
                 className="rounded-full px-16 py-[10px] font-semibold text-base capitalize"
@@ -396,7 +451,11 @@ export default function PomodoroModule() {
             </Box>
             <Box className="pt-[1px] my-6" sx={{ backgroundColor: "primary.light" }}></Box>
             <Box className="flex justify-between item-center ">
-              <Typography component="h4" className="text-base font-semibold w-10/12 flex justify-start items-center" sx={{ color: "secondary.contrastText" }}>
+              <Typography
+                component="h4"
+                className="text-base font-semibold w-10/12 flex justify-start items-center"
+                sx={{ color: "secondary.contrastText" }}
+              >
                 Long break interval
               </Typography>
               <FormControl variant="outlined" className="w-2/12">
@@ -411,7 +470,9 @@ export default function PomodoroModule() {
                 />
               </FormControl>
             </Box>
-            <Button  className="w-full font-semibold text-white bg-[#3F9BFC] hover:bg-blue-500 text-base rounded-full mt-6 p-3">Save</Button>
+            <Button className="w-full font-semibold text-white bg-[#3F9BFC] hover:bg-blue-500 text-base rounded-full mt-6 p-3">
+              Save
+            </Button>
           </Box>
         </Modal>
       </Paper>
