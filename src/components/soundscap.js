@@ -25,8 +25,7 @@ export default function Soundscap({ state, data }) {
       <Paper className="w-[500px]">
         {/* Box Header */}
         <Box
-          className="flex justify-between h-[65px] items-center text-gray-900 border p-4"
-          sx={{ backgroundColor: "secondary.contrastText" }}
+          className="flex justify-between h-[65px] bg-gray-50 items-center text-gray-900 border p-4"
         >
           <Typography className="font-bold text-[17px]">Soundscapes</Typography>
 

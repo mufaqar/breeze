@@ -95,7 +95,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
               {children}
             </Box>
-            {pathname != "/login"  && (<footer className="absolute bottom-2"> <Footer /> </footer>)}
+            {pathname != "/login" && (<footer className="absolute bottom-2"> <Footer /> </footer>)}
           </body>
         </Provider>
       </ThemeProvider>

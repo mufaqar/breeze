@@ -11,7 +11,6 @@ export const darkTheme = createTheme({
     primary: {
       main: '#3F9BFC',
       light: neutral[20],
-      contrastText: neutral[0],
       dark:  neutral[90],
     },
     secondary: {
@@ -44,13 +43,12 @@ export const lightTheme = createTheme({
     mode: "light",
     primary: {
       main: '#3F9BFC',
-      light: neutral[20],
       dark:  neutral[90],
-      contrastText: neutral[90],
+      light: neutral[20],
     },
     secondary: {
       main: neutral[0],
-      contrastText: neutral[5], 
+      contrastText: neutral[90],
     }
 
   },

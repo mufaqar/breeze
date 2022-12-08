@@ -16,6 +16,7 @@ import Creek from '../../public/assets/svg/Creek.svg'
 import Office from '../../public/assets/svg/Office.svg'
 import Random from '../../public/assets/svg/Random.svg'
 import Custom from '../../public/assets/svg/Custom.svg'
+import Link from "next/link";
 
 
 export default function Footer() {
@@ -102,12 +103,14 @@ export default function Footer() {
             <Sound className="text-2xl mr-1" />
             <Typography sx={{ color: "secondary.main" }}>Soundscapes</Typography>
           </Button>
+          <Link href="/setting" className="no-underline">
           <Button className="flex items-center">
             <Setting  className="text-2xl"/>
             <Typography sx={{ color: "secondary.main" }} className="pl-2">
               Settings
             </Typography>
           </Button>
+          </Link>
         </Box>
       </Box>
       <Box className={`absolute bottom-16 right-48 ${openSoundscap ? 'block' : 'hidden'}`}>
