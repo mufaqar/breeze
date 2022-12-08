@@ -8,6 +8,7 @@ import { KeyboardDoubleArrowLeft, KeyboardDoubleArrowRight } from '@mui/icons-ma
 import Image from 'next/image';
 
 const TabPanel = (props) => {
+  console.log("🚀 ~ file: SettingTabsLayout.js:11 ~ TabPanel ~ props", props)
   const { children, value, index, ...other } = props;
 
   return (
@@ -67,24 +68,18 @@ const SettingTabsLayout = (props) => {
         }}
       >
         <Stack direction="row" justifyContent="space-between" alignItems="center" mt={3} mx={isFullWidthPanel ? 2 : 1}>
-          <Typography variant={isFullWidthPanel ? 'h5' : 'h6'} fontWeight={600} textTransform="capitalize">{panelTitle}</Typography>
-          <Stack alignItems="center" sx={{ cursor: "pointer" }} onClick={() => setIsFullWidthPanel(!isFullWidthPanel)}>
-            {isFullWidthPanel ? <KeyboardDoubleArrowLeft sx={{ color: "gray" }} /> : <KeyboardDoubleArrowRight sx={{ color: "gray" }} />}
-          </Stack>
+          <Typography className='mb-5' variant={isFullWidthPanel ? 'h5' : 'h6'} fontWeight={600} textTransform="capitalize">{panelTitle}</Typography>
+          
         </Stack>
         {panelList.map((tabPanel, index) => (
 
-          <Tab key={index} sx={{
-            display: "flex", flexDirection: "row", alignItems: "center", justifyContent: isFullWidthPanel ? "start" : "center", gap: 1, p: 1, borderRadius: "8px", mx: 2, my: 0.5, border: "solid red", minHeight: "auto", minWidth: !isFullWidthPanel && "auto",
+          <Tab key={index} className="tablist hover:bg-blue-100" sx={{
+            display: "flex", flexDirection: "row", alignItems: "center", justifyContent: isFullWidthPanel ? "start" : "center", gap: 1, p: 1, borderRadius: "8px", mx: 2, my: 0.5, minHeight: "auto", minWidth: !isFullWidthPanel && "auto",
           }}
-            icon={
-              // <SvgIcon component={tabPanel.icon} />
-              <Image style={{ color: "red", margin: 0 }} src={tabPanel.icon} alt={tabPanel.title} width={isFullWidthPanel ? 20 : 25} height={isFullWidthPanel ? 20 : 25} />
-            }
+            icon={tabPanel.icon}
             label={
               <Stack flex={1} direction="row" justifyContent="space-between" alignItems="center">
                 {isFullWidthPanel && <Typography textTransform="capitalize" fontWeight={500}>{tabPanel.title}</Typography>}
-                <Typography backgroundColor="#F5F5F5" color="#78716C" py={0.25} px={0.5}>{tabPanel.value}</Typography>
               </Stack>
             }
             {...a11yProps((index))}
@@ -99,7 +94,7 @@ const SettingTabsLayout = (props) => {
           </TabPanel>
         ))
       }
-
+     
     </Box>
   );
 }

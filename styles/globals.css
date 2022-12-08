@@ -206,3 +206,9 @@ input:-internal-autofill-selected {
 .mui-switch.mui-switch-anim:checked:before {
   transition: left 0.3s;
 }
+.tablist svg{
+  margin-bottom: 0 !important;
+}
+.tablist.Mui-selected{
+  background: #DBEBFE !important;
+}
