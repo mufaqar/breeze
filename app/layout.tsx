@@ -46,7 +46,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               sx={{ backgroundImage: `url(${loginBg.src})` }}
               className="h-screen relative w-full bg-cover bg-no-repeat px-16 "
             >
-              {pathname != "/login" && (
+              {pathname != "/login" || pathname != "/setting" && (
                 <Box className="pt-5 flex justify-between">
                   <Box>
                     <Typography variant="h6" className="font-semibold text-2xl" sx={{ color: "secondary.main" }}>
@@ -95,7 +95,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
               {children}
             </Box>
-            {pathname != "/login" && (<footer className="absolute bottom-2"> <Footer /> </footer>)}
+            {pathname != "/login" || pathname != "/setting" && (<footer className="absolute bottom-2"> <Footer /> </footer>)}
           </body>
         </Provider>
       </ThemeProvider>
