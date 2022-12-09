@@ -52,7 +52,7 @@ export default function Soundscap({ state, data }) {
               {activeVolumeSlider === i ? (
                 <Slider aria-label="Volume" value={value} onChange={handleChange} />
               ) : (
-                <Typography className="text-[12px]  h-[22px] mt-2" sx={{ color: "primary.contrastText" }}>
+                <Typography className="text-[12px]  h-[22px] mt-2" sx={{ color: "secondary.contrastText" }}>
                   {item.name}
                 </Typography>
               )}

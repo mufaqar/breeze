@@ -173,7 +173,7 @@ export default function PomodoroModule() {
       <Button
         variant="contained"
         startIcon={icon}
-        className={`rounded-full py-[10px] font-semibold text-base capitalize ${padding}`}
+        className={`rounded-full py-[10px] hover:bg-blue-400 font-semibold text-base capitalize ${padding}`}
         sx={{ color: "secondary.contrastText", backgroundColor: "secondary.main" }}
         onClick={() => setStart(!start)}
       >

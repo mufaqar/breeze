@@ -212,3 +212,23 @@ input:-internal-autofill-selected {
 .tablist.Mui-selected{
   background: #DBEBFE !important;
 }
+
+.TabPanel>div{
+  padding:0 ;
+}
+.TabPanel>div>div{
+  padding: 1rem !important;
+}
+.TabPanel>div:first-child{
+  height: 100%;
+}
+.generalScroll::-webkit-scrollbar-track {
+  background: transparent; 
+}
+.generalScroll::-webkit-scrollbar-thumb {
+  background: rgb(155, 155, 155); 
+}
+.lightDarkModeSwitch label span:nth-child(2){
+  font-size: 14px !important;
+  font-weight: 600 !important;
+}
