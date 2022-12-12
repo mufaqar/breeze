@@ -24,6 +24,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     setTheme(currentValue ? darkTheme : lightTheme);
   };
 
+  
+
+
   return (
     <html lang="en">
       <head>

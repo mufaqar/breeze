@@ -14,12 +14,17 @@ import {
   FormControl,
   Radio,
   Button,
+  Select,
+  MenuItem,
+  InputLabel,
 } from "@mui/material";
 // import SvgIcon from "@material-ui/core/SvgIcon";
 import { KeyboardDoubleArrowLeft, KeyboardDoubleArrowRight } from "@mui/icons-material";
 import Image from "next/image";
 import CloseIcon from "@mui/icons-material/Close";
 import styled from "@emotion/styled";
+import BackgroundSettingTab from '../background.setting.tab'
+
 
 const swithData = [
   {
@@ -115,6 +120,16 @@ const SwitchSetting = ({ title }) => {
 };
 
 const General = () => {
+  const [dateFormate, setDateFormate] = React.useState("Friday, Jul 8");
+  const [timeFormate, setTimeFormate] = React.useState("9:18 PM");
+
+  const handleChange = (event) => {
+    setDateFormate(event.target.value);
+  };
+  const handleTimeFormate = (event) => {
+    setTimeFormate(event.target.value);
+  };
+
   return (
     <Box className="px-8 h-[calc(100%-61px)] overflow-y-scroll generalScroll">
       <Typography component="h6" className="uppercase text-xs mb-6 mt-3 font-semibold">
@@ -167,25 +182,73 @@ const General = () => {
       <Box
         className="flex justify-between items-center"
         sx={{ borderBottom: "1px solid #E6E6E6" }}
-        style={{ padding: "1.5rem 0"}}
+        style={{ padding: "1.5rem 0" }}
       >
-        <Typography
-          component="h4"
-          className="text-base font-semibold mt-5"
-          sx={{ color: "secondary.contrastText" }}
-        >
-          Fonts <sup className="font-semibold text-[10px] text-[#78716C] bg-[#E7E5E4] px-2 py-1 rounded-md uppercase">Plus</sup>
+        <Typography component="h4" className="text-base font-semibold " sx={{ color: "secondary.contrastText" }}>
+          Fonts
+          <sup className="font-semibold text-[10px] text-[#78716C] bg-[#E7E5E4] px-2 py-1 rounded-md uppercase">
+            Plus
+          </sup>
         </Typography>
         <Box className="flex justify-between item-center">
-          {
-            ['Classic', 'Modern', 'Startup', 'Retro', 'Warehouse', 'Quirky'].map((font,i)=>(
-              <div key={i} className="flex flex-col ml-4 justify-center items-center ">
-                <Button className="p-4 px-10 border-[1px] rounded-lg bg-gray-100 text-[#A3A3A3]" >Aa</Button>
-                <Typography className="text-sm font-semibold mt-2">{font}</Typography>
-              </div>
-            ))
-          }
+          {["Classic", "Modern", "Startup", "Retro", "Warehouse", "Quirky"].map((font, i) => (
+            <div key={i} className="flex flex-col ml-4 justify-center items-center ">
+              <Button className="p-4 px-10 rounded-lg _border text-[#A3A3A3]">Aa</Button>
+              <Typography className="text-sm font-semibold mt-2">{font}</Typography>
+            </div>
+          ))}
         </Box>
+      </Box>
+
+      {/* Date and Time */}
+      <Box className="date-and-time-formate">
+        <Typography component="h4" className="text-base font-semibold mt-10" sx={{ color: "secondary.contrastText" }}>
+          Date & Time
+        </Typography>
+
+        <Box className="max-w-[310px] mt-2 _rounded">
+          <Typography
+            component="h4"
+            className="text-base font-medium mt-4 mb-2"
+            sx={{ color: "secondary.contrastText" }}
+          >
+            Date Formate
+          </Typography>
+          <FormControl fullWidth>
+            <Select
+              labelId="demo-simple-select-label"
+              id="demo-simple-select"
+              value={dateFormate}
+              onChange={handleChange}
+            >
+              <MenuItem value={10} className="flex justify-between text-xs font-medium"> Friday, Jul 8 </MenuItem>
+              <MenuItem value={10} className="flex justify-between text-xs font-medium"> 2022-07-08</MenuItem>
+              <MenuItem value={10} className="flex justify-between text-xs font-medium"> 08/07/2022</MenuItem>
+              <MenuItem value={10} className="flex justify-between text-xs font-medium"> 07/08/2022</MenuItem>
+            </Select>
+          </FormControl>
+        </Box>
+        <Box className="max-w-[310px] mt-2 mb-10 ">
+          <Typography
+            component="h4"
+            className="text-base font-medium mt-4 mb-2"
+            sx={{ color: "secondary.contrastText" }}
+          >
+            Time Formate
+          </Typography>
+          <FormControl fullWidth>
+            <Select
+              labelId="demo-simple-select-label"
+              id="demo-simple-select"
+              value={timeFormate}
+              onChange={handleTimeFormate}
+            >
+              <MenuItem value={10} className="flex justify-between text-xs font-medium"> 9:18 PM </MenuItem>
+              
+            </Select>
+          </FormControl>
+        </Box>
+
       </Box>
     </Box>
   );
@@ -194,13 +257,13 @@ const General = () => {
 const Background = () => {
   return (
     <Box className="px-8">
-      <Typography>Background</Typography>
+      <BackgroundSettingTab/>
     </Box>
   );
 };
 
 const TabPanel = (props) => {
-  console.log("🚀 ~ file: SettingTabsLayout.js:11 ~ TabPanel ~ props", props);
+  // console.log("🚀 ~ file: SettingTabsLayout.js:11 ~ TabPanel ~ props", props);
   const { children, value, index, ...other } = props;
 
   return (
