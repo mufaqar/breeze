@@ -91,7 +91,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                     </Box>
                   </Box>
                 </Box>
-              )}
+              )} 
               {/* xx header section  xx */}
 
               {children}

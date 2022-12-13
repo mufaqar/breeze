@@ -1,5 +1,5 @@
 const { configureStore } = require("@reduxjs/toolkit");
-import changeBackgroundSlice from '../store/features/background/changebackgroundSlice'
+import changeBackgroundSlice from './features/themeFeatures/changebackgroundSlice'
 
 const store = configureStore({
     reducer: {

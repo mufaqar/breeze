@@ -11,7 +11,7 @@ import { useDispatch, useSelector } from "react-redux";
 import VideoIcon from "../../public/assets/svg/video.svg";
 import { solidColors } from "../mockData/setting/solidcolors";
 import FileUpload from './fileUpload'
-import { changeBg } from "../store/features/background/changebackgroundSlice";
+import { changeBg } from "../store/features/themeFeatures/changebackgroundSlice";
 
 
 function TabPanel(props) {
@@ -49,7 +49,7 @@ function a11yProps(index) {
 
 export default function BackgroundSettingTab() {
   const [value, setValue] = React.useState(0);
-  const dispatch = useDispatch()  
+  const dispatch = useDispatch() 
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
