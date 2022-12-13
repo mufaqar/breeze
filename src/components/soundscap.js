@@ -5,8 +5,10 @@ import RemoveIcon from "@mui/icons-material/Remove";
 import Image from "next/image";
 import Volumeicon from "../../public/assets/svg/volumeicon.svg";
 
+
+
 export default function Soundscap({ state, data }) {
-  console.log("🚀 ~ file: soundscap.js:10 ~ Soundscap ~ data", data);
+  
   const [value, setValue] = useState(30);
   const [activeVolumeSlider, setActiveVolumeSlider] = useState(null);
 

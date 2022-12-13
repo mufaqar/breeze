@@ -16,4 +16,5 @@ const changeBackgroundSlice = createSlice({
     }    
 })
 
+export const {changeBg} = changeBackgroundSlice.actions
 export default changeBackgroundSlice

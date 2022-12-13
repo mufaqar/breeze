@@ -7,10 +7,11 @@ import Box from "@mui/material/Box";
 import { settingModuleData } from "../mockData/setting/image-tab";
 import { settingModuleVideoData } from "../mockData/setting/video-tab";
 import Image from "next/image";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import VideoIcon from "../../public/assets/svg/video.svg";
 import { solidColors } from "../mockData/setting/solidcolors";
 import FileUpload from './fileUpload'
+import { changeBg } from "../store/features/background/changebackgroundSlice";
 
 
 function TabPanel(props) {
@@ -48,13 +49,15 @@ function a11yProps(index) {
 
 export default function BackgroundSettingTab() {
   const [value, setValue] = React.useState(0);
+  const dispatch = useDispatch()  
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
 
   const ChangeBackgroundImage = (ImagePath) => {
-    console.log(ImagePath);
+    console.log('ImagePath', ImagePath);
+    dispatch(changeBg(ImagePath))
   };
 
   const backgroundUrl = useSelector((state) => state.changeBackground.backgroundImageURL);
@@ -93,7 +96,7 @@ export default function BackgroundSettingTab() {
         <Box className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-2 md:gap-3 lg:gap-6">
           {settingModuleVideoData.map((video, i) => {
             return (
-              <div className="relative">
+              <div className="relative" key={i}>
                 <div key={i} className="image-container cursor-pointer">
                   {video?.imagePath && (
                     <Image src={video?.imagePath} alt="background-image" layout="fill" className={"image "} />
