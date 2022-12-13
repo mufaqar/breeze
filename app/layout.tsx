@@ -13,6 +13,9 @@ import { usePathname } from "next/navigation";
 import { Provider, useSelector } from "react-redux";
 import store from '../src/store/store'
 import Footer from "../src/components/footer";
+import Layout from '../src/components/Layout'
+
+
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   let [useDarkTheme, setUseDarkTheme] = useState(false);
@@ -36,17 +39,14 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <link rel="preconnect" href="https://fonts.gstatic.com"/>
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"></link>
       </head>
+      
       <ThemeProvider theme={theme}>
         <Provider store={store} >
           <body id="__next">
             <CssBaseline />
             {/* header section  */}
-            <Box
-              component="main"
-              sx={{ backgroundImage: `url(${loginBg.src})` }}
-              // sx={{ backgroundImage: `url(${loginBg.src})` }}
-              className="h-screen relative w-full bg-cover bg-no-repeat px-16"
-            >
+            <Layout>
+            
               {pathname != "/login" && (
                 <Box className="pt-5 flex justify-between">
                   <Box>
@@ -95,8 +95,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               {/* xx header section  xx */}
 
               {children}
-            </Box>
+            
             {pathname != "/login" && (<footer className="absolute bottom-2"> <Footer /> </footer>)}
+            </Layout>
           </body>
         </Provider>
       </ThemeProvider>

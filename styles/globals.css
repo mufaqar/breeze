@@ -85,8 +85,7 @@ input:-internal-autofill-selected {
 }
 
 .wfull {
-  width: 100vw;
-  padding: 0 64px;
+  width: calc(100vw - 128px) !important;
 }
 
 .change-search-engine {

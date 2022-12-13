@@ -115,8 +115,8 @@ export default function Footer() {
 
   return (
     <>
-      <div className="relative">
-        <Box variant="div" className="flex justify-between items-center wfull" sx={{ color: "secondary.main" }}>
+      <div className="relative container mx-auto">
+        <Box variant="div" className="flex justify-between  items-center wfull" sx={{ color: "secondary.main" }}>
           <Box className="w-1/3">
             <Typography>Nattu Adnan (Unsplash)</Typography>
           </Box>

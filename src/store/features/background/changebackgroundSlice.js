@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import iniBackground from '../../../../public/assets/images/login-bg.png'
+import iniBackground2 from '../../../../public/assets/images/login-bg2.png'
 
 const initialState ={
     backgroundImageURL : iniBackground
