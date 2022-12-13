@@ -256,7 +256,7 @@ const General = () => {
 
 const Background = () => {
   return (
-    <Box className="px-8">
+    <Box className="px-8 h-[calc(100%-61px)] overflow-y-scroll generalScroll rounded-lg">
       <BackgroundSettingTab/>
     </Box>
   );

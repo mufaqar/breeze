@@ -61,7 +61,7 @@ export default function BackgroundSettingTab() {
   //   console.log("🚀 ~ file: layout.tsx:28 ~ RootLayout ~ backgroundUrl", backgroundUrl)
 
   return (
-    <Box sx={{ width: "100%" }}>
+    <Box sx={{ width: "100%" }} >
       <Box>
         <Tabs value={value} onChange={handleChange} aria-label="basic tabs backgroundTabs example p-0">
           <Tab label="Photo" {...a11yProps(0)} className="text-base font-semibold capitalize" />
