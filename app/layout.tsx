@@ -4,13 +4,13 @@ import "../styles/globals.css";
 import { darkTheme, lightTheme } from "../src/theme/themes";
 
 import { ThemeProvider, CssBaseline, Switch, FormControlLabel, Box, Typography } from "@mui/material";
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
 //import Header from "../app/components/header";
 import { loginBg } from "../public/assets/export";
 import Image from "next/image";
 import { sunny } from "../public/assets/export";
 import { usePathname } from "next/navigation";
-import { Provider } from "react-redux";
+import { Provider, useSelector } from "react-redux";
 import store from '../src/store/store'
 import Footer from "../src/components/footer";
 
@@ -23,8 +23,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     setUseDarkTheme(currentValue);
     setTheme(currentValue ? darkTheme : lightTheme);
   };
-
-  
 
 
   return (
@@ -43,11 +41,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <body id="__next">
             <CssBaseline />
             {/* header section  */}
-
             <Box
               component="main"
               sx={{ backgroundImage: `url(${loginBg.src})` }}
-              className="h-screen relative w-full bg-cover bg-no-repeat px-16 "
+              // sx={{ backgroundImage: `url(${loginBg.src})` }}
+              className="h-screen relative w-full bg-cover bg-no-repeat px-16"
             >
               {pathname != "/login" && (
                 <Box className="pt-5 flex justify-between">

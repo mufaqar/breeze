@@ -248,7 +248,7 @@ input:-internal-autofill-selected {
   object-fit: cover;
   width: 100% !important;
   height: 120px;
-  border-radius: 6px;
+  border-radius: 10px;
   position: relative !important;
   /* height: unset !important; */
 }
@@ -277,4 +277,14 @@ input:-internal-autofill-selected {
   min-width: unset !important;
   padding: 0 10px !important;
   margin-right: 1rem;
+}
+._videobg .css-19kzrtu, 
+._solidColor .css-19kzrtu, 
+._customassets .css-19kzrtu{
+  padding: 0 !important;
+  padding-top: 24px !important;
+  padding-bottom: 24px !important;
+}
+._spanclr{
+  color: #3F9BFC !important;
 }

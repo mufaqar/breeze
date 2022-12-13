@@ -4,16 +4,18 @@ import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
-import {settingModuleData} from '../mockData/setting/image-tab'
-import Image from 'next/image'
+import { settingModuleData } from "../mockData/setting/image-tab";
+import { settingModuleVideoData } from "../mockData/setting/video-tab";
+import Image from "next/image";
 import { useSelector } from "react-redux";
+import VideoIcon from "../../public/assets/svg/video.svg";
+import { solidColors } from "../mockData/setting/solidcolors";
+import FileUpload from './fileUpload'
+
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
-    
-
-  
-
+  // console.log('solidColors', solidColors)
   return (
     <div
       role="tabpanel"
@@ -51,12 +53,12 @@ export default function BackgroundSettingTab() {
     setValue(newValue);
   };
 
-  const ChangeBackgroundImage = (ImagePath) =>{
-    console.log(ImagePath)
-  }
+  const ChangeBackgroundImage = (ImagePath) => {
+    console.log(ImagePath);
+  };
 
-  const backgroundUrl = useSelector((state) => state.changeBackground.backgroundImageURL)
-  console.log("🚀 ~ file: layout.tsx:28 ~ RootLayout ~ backgroundUrl", backgroundUrl)
+  const backgroundUrl = useSelector((state) => state.changeBackground.backgroundImageURL);
+  //   console.log("🚀 ~ file: layout.tsx:28 ~ RootLayout ~ backgroundUrl", backgroundUrl)
 
   return (
     <Box sx={{ width: "100%" }}>
@@ -68,27 +70,67 @@ export default function BackgroundSettingTab() {
           <Tab label="My gallery" {...a11yProps(3)} className="text-base font-semibold capitalize" />
         </Tabs>
       </Box>
+      {/* image background */}
       <TabPanel value={value} index={0} className="tabPanel">
         <Box className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-2 md:gap-3 lg:gap-6">
-            {
-                settingModuleData.map((image,i)=>{
-                    return(
-                       <div key={i} className="image-container" onClick={()=>ChangeBackgroundImage(image?.imagePath)}>
-                            {image?.imagePath && <Image src={image?.imagePath} alt="background-image" layout="fill" className={'image '}/>}
-                       </div>
-                    )
-                })
-            }
+          {settingModuleData.map((image, i) => {
+            return (
+              <div
+                key={i}
+                className="image-container cursor-pointer"
+                onClick={() => ChangeBackgroundImage(image?.imagePath)}
+              >
+                {image?.imagePath && (
+                  <Image src={image?.imagePath} alt="background-image" layout="fill" className={"image "} />
+                )}
+              </div>
+            );
+          })}
         </Box>
       </TabPanel>
-      <TabPanel value={value} index={1}>
-        Item Two
+      {/* video background */}
+      <TabPanel value={value} className="_videobg" index={1}>
+        <Box className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-2 md:gap-3 lg:gap-6">
+          {settingModuleVideoData.map((video, i) => {
+            return (
+              <div className="relative">
+                <div key={i} className="image-container cursor-pointer">
+                  {video?.imagePath && (
+                    <Image src={video?.imagePath} alt="background-image" layout="fill" className={"image "} />
+                  )}
+                </div>
+                <div
+                  className="bg-black/30 absolute top-0 flex cursor-pointer justify-center items-center rounded-[10px] right-0 left-0 bottom-[6px]"
+                  onClick={() => ChangeBackgroundImage(video?.videolink)}
+                >
+                  <VideoIcon />
+                </div>
+              </div>
+            );
+          })}
+        </Box>
       </TabPanel>
-      <TabPanel value={value} index={2}>
-        Item Three
+      {/* color background */}
+      <TabPanel value={value} index={2} className="_solidColor">
+        <Box className="grid grid-cols-4 md:grid-cols-6 lg:grid-cols-8 xl:grid-cols-10 gap-2 md:gap-3 lg:gap-6">
+         {solidColors.map((color, i) => {
+            return (
+              <div
+                key={i}
+                className="image-container cursor-pointer"
+                onClick={() => ChangeBackgroundImage(color?.colorCode)}
+              >
+                {color?.colorCode && (
+                  <div className={`px-10 py-10 rounded-xl`} style={{ background: color?.colorCode }}></div>
+                )}
+              </div>
+            );
+          })} 
+        </Box>
       </TabPanel>
-      <TabPanel value={value} index={3}>
-        Item Three
+      {/* custom background */}
+      <TabPanel value={value} index={3} className="_customassets">
+        <FileUpload/>
       </TabPanel>
     </Box>
   );
