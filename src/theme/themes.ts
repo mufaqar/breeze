@@ -20,7 +20,6 @@ export const darkTheme = createTheme({
     }
   },
 
-
   components: {
     MuiSwitch: {
       styleOverrides: {
@@ -35,7 +34,9 @@ export const darkTheme = createTheme({
         }
       }
     }
-  }
+  },
+
+  
 });
 
 export const lightTheme = createTheme({

@@ -115,7 +115,7 @@ export default function Footer() {
 
   return (
     <>
-      <div className="relative container mx-auto">
+      <div className="relative">
         <Box variant="div" className="flex justify-between  items-center wfull" sx={{ color: "secondary.main" }}>
           <Box className="w-1/3">
             <Typography>Nattu Adnan (Unsplash)</Typography>
@@ -125,12 +125,12 @@ export default function Footer() {
           </Box>
           <Box className="space-x-5 flex justify-end w-1/3">
             <Button onClick={() => setOpenSoundscap(!openSoundscap)} className="flex  items-center">
-              <Sound className="text-2xl mr-1" />
+              <Sound className="text-2xl mr-1" sx={{ color: "secondary.contrastText"}}/>
               <Typography sx={{ color: "secondary.main" }}>Soundscapes</Typography>
             </Button>
             
               <Button className="flex items-center" onClick={handleOpen}>
-                <Setting className="text-2xl" />
+                <Setting className="text-2xl" sx={{ color: "secondary.contrastText"}}/>
                 <Typography sx={{ color: "secondary.main" }} className="pl-2">
                   Settings
                 </Typography>
@@ -138,7 +138,7 @@ export default function Footer() {
            
           </Box>
         </Box>
-        <Box className={`absolute bottom-16 right-48 ${openSoundscap ? "block" : "hidden"}`}>
+        <Box className={`absolute bottom-16 right-32 ${openSoundscap ? "block" : "hidden"}`}>
           <Soundscap state={ChangeState} data={SoundScapesData} />
         </Box>
       </div>

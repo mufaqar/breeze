@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import {
   Tabs,
@@ -24,6 +24,8 @@ import Image from "next/image";
 import CloseIcon from "@mui/icons-material/Close";
 import styled from "@emotion/styled";
 import BackgroundSettingTab from '../background.setting.tab'
+import { useDispatch, useSelector } from "react-redux";
+import { changeThemeToDarkAndLight } from "../../store/features/themeFeatures/switchtheme";
 
 
 const swithData = [
@@ -130,6 +132,20 @@ const General = () => {
     setTimeFormate(event.target.value);
   };
 
+  const theme = useSelector((state)=>state.swithDarkmode.darkMode)
+  const dispatch = useDispatch()
+
+  const lightMode = (i) => {
+    dispatch(changeThemeToDarkAndLight(i))
+  }
+
+  const darkMode = (i) => {
+    dispatch(changeThemeToDarkAndLight(i))
+  }
+
+
+  console.log("🚀 ~ file: SettingTabsLayout.js:135 ~ General ~ theme", theme)
+
   return (
     <Box className="px-8 h-[calc(100%-61px)] overflow-y-scroll generalScroll">
       <Typography component="h6" className="uppercase text-xs mb-6 mt-3 font-semibold">
@@ -153,7 +169,7 @@ const General = () => {
         <Box className="lightDarkModeSwitch">
           <FormControl>
             <RadioGroup defaultValue="light" aria-labelledby="demo-customized-radios" name="customized-radios" row>
-              <button className="bg-[#F5F5F5] mr-4 p-3 rounded-lg border border-blue-500">
+              <button className="bg-[#F5F5F5] mr-4 p-3 rounded-lg border border-blue-500" onClick={()=>lightMode(false)}>
                 <FormControlLabel value="light" control={<BpRadio />} label="Light" className="text-sm font-semibold" />
                 <div className="bg-[#E7E5E4] p-[6px] rounded-md">
                   <div className="bg-white p-[6px] rounded-md">
@@ -165,6 +181,7 @@ const General = () => {
               <button
                 className="bg-white p-3 rounded-lg border-none border-gray-300 "
                 style={{ border: "1px solid #eae8e9" }}
+                onClick={()=>darkMode(true)}
               >
                 <FormControlLabel value="dark" control={<BpRadio />} label="Dark" className="text-sm font-semibold" />
                 <div className="bg-[#292524] p-[6px] rounded-md">
@@ -173,6 +190,8 @@ const General = () => {
                   </div>
                 </div>
               </button>
+
+              
             </RadioGroup>
           </FormControl>
         </Box>
@@ -193,7 +212,7 @@ const General = () => {
         <Box className="flex justify-between item-center">
           {["Classic", "Modern", "Startup", "Retro", "Warehouse", "Quirky"].map((font, i) => (
             <div key={i} className="flex flex-col ml-4 justify-center items-center ">
-              <Button className="p-4 px-10 rounded-lg _border text-[#A3A3A3]">Aa</Button>
+              <Button className="p-4 px-10 rounded-lg  text-[#A3A3A3]" sx={{ border:1, borderColor: "primary.light" }}>Aa</Button>
               <Typography className="text-sm font-semibold mt-2">{font}</Typography>
             </div>
           ))}
