@@ -10,17 +10,17 @@ export const settingModuleVideoData = [
     },
     {
         id: 1,
-        videolink: 'https://www.google.com/',
+        videolink: 'https://netdemo.uk/bbb/bbb.mp4',
         imagePath: backgroundOne
     },
     {
         id: 2,
-        videolink: 'https://www.google.com/',
+        videolink: 'https://res.cloudinary.com/oscarjite/video/upload/v1662154978/walking_on_the_moon_j5tytl.mp4',
         imagePath: backgroundTwo
     },
     {
         id: 3,
-        videolink: 'https://www.google.com/',
+        videolink: 'https://netdemo.uk/bbb/bbb.mp4',
         imagePath: backgroundOThree
     },
 ]

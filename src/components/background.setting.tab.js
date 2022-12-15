@@ -67,10 +67,10 @@ export default function BackgroundSettingTab() {
     <Box sx={{ width: "100%" }} >
       <Box>
         <Tabs value={value} onChange={handleChange} aria-label="basic tabs backgroundTabs example p-0">
-          <Tab label="Photo" {...a11yProps(0)} className="text-base font-semibold capitalize" />
-          <Tab label="Video" {...a11yProps(1)} className="text-base font-semibold capitalize" />
-          <Tab label="Color" {...a11yProps(2)} className="text-base font-semibold capitalize" />
-          <Tab label="My gallery" {...a11yProps(3)} className="text-base font-semibold capitalize" />
+          <Tab label="Photo" {...a11yProps(0)} className="text-base font-semibold capitalize" sx={{ color: "secondary.contrastText" }}/>
+          <Tab label="Video" {...a11yProps(1)} className="text-base font-semibold capitalize" sx={{ color: "secondary.contrastText" }}/>
+          <Tab label="Color" {...a11yProps(2)} className="text-base font-semibold capitalize" sx={{ color: "secondary.contrastText" }}/>
+          <Tab label="My gallery" {...a11yProps(3)} className="text-base font-semibold capitalize" sx={{ color: "secondary.contrastText" }}/>
         </Tabs>
       </Box>
       {/* image background */}

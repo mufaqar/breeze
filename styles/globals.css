@@ -9,7 +9,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap");
 
 body, html, *,p,span, strong,a, h1, h2, h3, h4, h5, h6, li{
-  font-family: "Inter", sans-serif !important;
+  /* font-family: "Inter", sans-serif !important; */
 }
 
 
@@ -208,9 +208,13 @@ input:-internal-autofill-selected {
 .tablist svg{
   margin-bottom: 0 !important;
 }
-.tablist.Mui-selected{
-  background: #DBEBFE !important;
+.tablist.Mui-selected.css-64qqei-MuiButtonBase-root-MuiTab-root{
+  background: rgba(63, 155, 252, 0.15) !important;
 }
+.tablist.Mui-selected.css-330hyd-MuiButtonBase-root-MuiTab-root{
+  background: #212C39 !important;
+}
+
 
 .TabPanel>div{
   padding:0 ;

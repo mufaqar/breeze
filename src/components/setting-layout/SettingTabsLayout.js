@@ -26,7 +26,35 @@ import styled from "@emotion/styled";
 import BackgroundSettingTab from '../background.setting.tab'
 import { useDispatch, useSelector } from "react-redux";
 import { changeThemeToDarkAndLight } from "../../store/features/themeFeatures/switchtheme";
+import { setFont } from '../../store/features/themeFeatures/fontsSlice'
 
+
+const fonts = [
+  {
+   type: "Classic",
+   FontFamily: 'Inter' 
+  },
+  {
+    type: "Modern",
+    FontFamily: 'Montserrat' 
+   },
+   {
+    type: "Startup",
+    FontFamily: '' 
+   },
+   {
+    type: "Retro",
+    FontFamily: '' 
+   },
+   {
+    type: "Warehouse",
+    FontFamily: '' 
+   },
+   {
+    type: "Quirky",
+    FontFamily: '' 
+   },
+]
 
 const swithData = [
   {
@@ -107,23 +135,31 @@ function BpRadio(props) {
 }
 
 const SwitchSetting = ({ title }) => {
+  const theme = useSelector((state)=>state.swithDarkmode.darkMode)
+  
   return (
-    <Box className="flex justify-between item-center py-2" sx={{ borderBottom: "1px solid #E6E6E6" }}>
+    <Box className="flex justify-between item-center py-2" sx={{ borderBottom: 1, borderColor: "secondary.main" }}>
       <Typography
         component="h4"
         className="text-base font-semibold flex flex-col items-center justify-center"
-        sx={{ color: "secondary.contrastText" }}
+        sx={{ color: "secondary.light" }}
       >
         {title}
       </Typography>
-      <input class="mui-switch" type="checkbox"></input>
+      <input class={`mui-switch ${theme ? 'bg-[#44403C] border-transparent' : ''}`} type="checkbox"></input>
     </Box>
   );
 };
 
 const General = () => {
+
+  const switchFontFamily = useSelector((state) => state.switchFont.fontFamily);
+
+
   const [dateFormate, setDateFormate] = React.useState("Friday, Jul 8");
   const [timeFormate, setTimeFormate] = React.useState("9:18 PM");
+  const [font,setFont] = React.useState()
+  const [fontType,setFontType] = React.useState()
 
   const handleChange = (event) => {
     setDateFormate(event.target.value);
@@ -143,44 +179,53 @@ const General = () => {
     dispatch(changeThemeToDarkAndLight(i))
   }
 
+  
+  useEffect(()=>{
+    localStorage.setItem('fontFamily', JSON.stringify(switchFontFamily))
+  })
+
+  const changeFont = (font) => {
+    console.log('font.......', font)
+    setFontType(font.type)
+  }
 
   console.log("🚀 ~ file: SettingTabsLayout.js:135 ~ General ~ theme", theme)
 
   return (
     <Box className="px-8 h-[calc(100%-61px)] overflow-y-scroll generalScroll">
-      <Typography component="h6" className="uppercase text-xs mb-6 mt-3 font-semibold">
+      <Typography component="h6" className="uppercase text-lg mb-6 mt-3 font-semibold" sx={{ color: "secondary.contrastText"}}>
         Show
       </Typography>
       {swithData.map((item, i) => (
         <SwitchSetting title={item.name} key={i} />
       ))}
-      <Typography component="h6" className="uppercase text-xs mb-3 mt-10 font-semibold">
+      <Typography component="h6" className="uppercase text-lg mb-3 mt-10 font-semibold" sx={{ color: "secondary.contrastText"}}>
         APPEARANCE
       </Typography>
       {/* Theme */}
-      <Box className="flex justify-between items-center pb-[1.5rem]" sx={{ borderBottom: "1px solid #E6E6E6" }}>
+      <Box className="flex justify-between items-center pb-[1.5rem]" sx={{ borderBottom: 1, borderColor: "secondary.main" }}>
         <Typography
           component="h4"
           className="text-base font-semibold flex flex-col items-center justify-center"
-          sx={{ color: "secondary.contrastText" }}
+          sx={{ color: "secondary.light" }}
         >
           Theme
         </Typography>
         <Box className="lightDarkModeSwitch">
           <FormControl>
             <RadioGroup defaultValue="light" aria-labelledby="demo-customized-radios" name="customized-radios" row>
-              <button className="bg-[#F5F5F5] mr-4 p-3 rounded-lg border border-blue-500" onClick={()=>lightMode(false)}>
+              <Box className={`bg-transparent mr-4 p-3 rounded-lg ${theme ? '' : 'bg-[#F5F5F5] border-[#3F9BFC]'}`} onClick={()=>lightMode(false)} sx={{ border: 1, borderColor: "secondary.main"}}>
                 <FormControlLabel value="light" control={<BpRadio />} label="Light" className="text-sm font-semibold" />
                 <div className="bg-[#E7E5E4] p-[6px] rounded-md">
                   <div className="bg-white p-[6px] rounded-md">
                     <div className="bg-[#E7E5E4] p-[2px] rounded-md"></div>
                   </div>
                 </div>
-              </button>
+              </Box>
 
-              <button
-                className="bg-white p-3 rounded-lg border-none border-gray-300 "
-                style={{ border: "1px solid #eae8e9" }}
+              <Box
+                className={`p-3 rounded-lg ${theme ? 'bg-[#292524] border-[#3F9BFC]' : ''}`}
+                sx={{ border: 1, borderColor: "secondary.main"}}
                 onClick={()=>darkMode(true)}
               >
                 <FormControlLabel value="dark" control={<BpRadio />} label="Dark" className="text-sm font-semibold" />
@@ -189,7 +234,7 @@ const General = () => {
                     <div className="bg-[#78716C] p-[2px] rounded-md"></div>
                   </div>
                 </div>
-              </button>
+              </Box>
 
               
             </RadioGroup>
@@ -200,20 +245,22 @@ const General = () => {
       {/* Fonts */}
       <Box
         className="flex justify-between items-center"
-        sx={{ borderBottom: "1px solid #E6E6E6" }}
+        sx={{ borderBottom: 1, borderColor: "secondary.main" }}
         style={{ padding: "1.5rem 0" }}
       >
-        <Typography component="h4" className="text-base font-semibold " sx={{ color: "secondary.contrastText" }}>
+        <Typography component="h4" className="text-base font-semibold " sx={{ color: "secondary.light" }}>
           Fonts
           <sup className="font-semibold text-[10px] text-[#78716C] bg-[#E7E5E4] px-2 py-1 rounded-md uppercase">
             Plus
           </sup>
         </Typography>
         <Box className="flex justify-between item-center">
-          {["Classic", "Modern", "Startup", "Retro", "Warehouse", "Quirky"].map((font, i) => (
+          {fonts.map((font, i) => (
             <div key={i} className="flex flex-col ml-4 justify-center items-center ">
-              <Button className="p-4 px-10 rounded-lg  text-[#A3A3A3]" sx={{ border:1, borderColor: "primary.light" }}>Aa</Button>
-              <Typography className="text-sm font-semibold mt-2">{font}</Typography>
+              <Box className={`p-4 px-10 rounded-lg cursor-pointer capitalize ${ font.type === fontType ? theme && 'text-white' : 'text-[#78716C]' }`} sx={{ border: 1, 
+                borderColor: `${font.type === fontType ? 'primary.main' : 'secondary.main'}` }}
+              onClick={()=>changeFont(font)}>Aa</Box>
+              <Typography className="text-sm font-semibold mt-2" sx={{ color: 'primary.contrastText' }}>{font.type}</Typography>
             </div>
           ))}
         </Box>
@@ -221,7 +268,7 @@ const General = () => {
 
       {/* Date and Time */}
       <Box className="date-and-time-formate">
-        <Typography component="h4" className="text-base font-semibold mt-10" sx={{ color: "secondary.contrastText" }}>
+        <Typography component="h4" className="text-lg font-semibold mt-10" sx={{ color: "secondary.contrastText" }}>
           Date & Time
         </Typography>
 
@@ -229,7 +276,7 @@ const General = () => {
           <Typography
             component="h4"
             className="text-base font-medium mt-4 mb-2"
-            sx={{ color: "secondary.contrastText" }}
+            sx={{ color: "secondary.light" }}
           >
             Date Formate
           </Typography>
@@ -251,7 +298,7 @@ const General = () => {
           <Typography
             component="h4"
             className="text-base font-medium mt-4 mb-2"
-            sx={{ color: "secondary.contrastText" }}
+            sx={{ color: "secondary.light" }}
           >
             Time Formate
           </Typography>
@@ -366,7 +413,7 @@ const SettingTabsLayout = (props) => {
         {panelList.map((tabPanel, index) => (
           <Tab
             key={index}
-            className="tablist hover:bg-blue-100"
+            className={`tablist`}
             sx={{
               display: "flex",
               flexDirection: "row",
@@ -384,7 +431,7 @@ const SettingTabsLayout = (props) => {
             label={
               <Stack flex={1} direction="row" justifyContent="space-between" alignItems="center">
                 {isFullWidthPanel && (
-                  <Typography textTransform="capitalize" fontWeight={500}>
+                  <Typography textTransform="capitalize" fontWeight={500} sx={{ color: "secondary.light" }}>
                     {tabPanel.title}
                   </Typography>
                 )}
@@ -398,7 +445,7 @@ const SettingTabsLayout = (props) => {
       <TabPanel value={value} index={1} className="w-full p-0 TabPanel">
         <Box sx={{ borderBottom: 1, borderColor: "divider" }} className="p-0">
           <Box className="flex justify-between item-center w-full ">
-            <Typography className="text-lg font-semibold">General</Typography>
+            <Typography className="text-lg font-semibold" sx={{ color: "secondary.light" }}>General</Typography>
             <CloseIcon onClick={() => closeSetting()} className="cursor-pointer" />
           </Box>
         </Box>
@@ -408,7 +455,7 @@ const SettingTabsLayout = (props) => {
       <TabPanel value={value} index={2} className="w-full p-0 TabPanel">
         <Box sx={{ borderBottom: 1, borderColor: "divider" }} className="p-0">
           <Box className="flex justify-between item-center w-full ">
-            <Typography className="text-lg font-semibold">Background</Typography>
+            <Typography className="text-lg font-semibold" sx={{ color: "secondary.light" }}>Background</Typography>
             <CloseIcon onClick={() => closeSetting()} className="cursor-pointer" />
           </Box>
         </Box>

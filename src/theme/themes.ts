@@ -1,24 +1,34 @@
 "use client";
 
 import { createTheme } from "@mui/material/styles";
-import red from "@mui/material/colors/red";
 import { neutral, success, warning, danger } from './colors'
+import { useSelector } from "react-redux";
+import { useEffect } from "react";
 
+const font = JSON.parse(localStorage.getItem("fontFamily") || "") 
+console.log("🚀 ~ file: themes.ts:9 ~ font", font)
 
 export const darkTheme = createTheme({
+  
   palette: {
     mode: "dark",
     primary: {
       main: '#3F9BFC',
-      light: neutral[20],
+      light: '#212C39',
       dark:  neutral[90],
+      contrastText: neutral[40],
     },
     secondary: {
-      main: neutral[90],
-      light: neutral[30],
-      contrastText: neutral[0],
+      main: neutral[70],
+      light: neutral[0],
+      dark:  neutral[90],
+      contrastText: neutral[60],
     }
   },
+  typography: {
+    fontFamily: [`${font}`].join(','),
+  },
+
 
   components: {
     MuiSwitch: {
@@ -48,10 +58,15 @@ export const lightTheme = createTheme({
       light: neutral[20],
     },
     secondary: {
-      main: neutral[0],
-      contrastText: neutral[90],
+      main: neutral[20],
+      light: neutral[90],
+      dark:  neutral[90],
+      contrastText: neutral[60],
     }
 
+  },
+  typography: {
+    fontFamily: [`${font}`].join(','),
   },
 
   components: {
