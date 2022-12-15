@@ -18,8 +18,8 @@ import Random from "../../public/assets/svg/Random.svg";
 import Custom from "../../public/assets/svg/Custom.svg";
 import Link from "next/link";
 import GeneralSetting from '../components/general-setting'
-
-
+import SettingsIcon from '@mui/icons-material/Settings';
+import QueueMusicIcon from '@mui/icons-material/QueueMusic';
 
 const style = {
   position: 'absolute',
@@ -116,7 +116,7 @@ export default function Footer() {
   return (
     <>
       <div className="relative">
-        <Box variant="div" className="flex justify-between  items-center wfull" sx={{ color: "secondary.main" }}>
+        <Box variant="div" className="flex justify-between  items-center wfull" sx={{ color: "secondary.dark" }}>
           <Box className="w-1/3">
             <Typography>Nattu Adnan (Unsplash)</Typography>
           </Box>
@@ -125,13 +125,13 @@ export default function Footer() {
           </Box>
           <Box className="space-x-5 flex justify-end w-1/3">
             <Button onClick={() => setOpenSoundscap(!openSoundscap)} className="flex  items-center">
-              <Sound className="text-2xl mr-1" sx={{ color: "secondary.contrastText"}}/>
-              <Typography sx={{ color: "secondary.main" }}>Soundscapes</Typography>
+              <QueueMusicIcon className="text-2xl mr-1" sx={{ color: "secondary.dark"}}/>
+              <Typography sx={{ color: "secondary.dark" }}>Soundscapes</Typography>
             </Button>
             
               <Button className="flex items-center" onClick={handleOpen}>
-                <Setting className="text-2xl" sx={{ color: "secondary.contrastText"}}/>
-                <Typography sx={{ color: "secondary.main" }} className="pl-2">
+                <SettingsIcon className="text-2xl" sx={{ color: "secondary.dark"}}/>
+                <Typography sx={{ color: "secondary.dark" }} className="pl-2">
                   Settings
                 </Typography>
               </Button>

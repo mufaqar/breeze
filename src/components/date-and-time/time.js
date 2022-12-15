@@ -11,7 +11,7 @@ let TimeOptions = {
 
 export default function Time() {
   return (
-    <Typography variant="h3" className="font-semibold text-[128px]" sx={{ color: "secondary.main" }}>
+    <Typography variant="h3" className="font-semibold text-[128px]" sx={{ color: "secondary.dark" }}>
       {TimeFormatter.format(new Date())}
     </Typography>
   );

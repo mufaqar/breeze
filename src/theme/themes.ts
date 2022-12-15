@@ -60,7 +60,7 @@ export const lightTheme = createTheme({
     secondary: {
       main: neutral[20],
       light: neutral[90],
-      dark:  neutral[90],
+      dark:  neutral[0],
       contrastText: neutral[60],
     }
 

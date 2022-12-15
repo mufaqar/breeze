@@ -26,7 +26,7 @@ export default function Header() {
     <>
       <Box className="pt-5 flex justify-between">
         <Box>
-          <Typography variant="h6" className="font-semibold text-2xl" sx={{ color: "secondary.main" }}>
+          <Typography variant="h6" className="font-semibold text-2xl" sx={{ color: "secondary.dark" }}>
             Breeze
           </Typography>
         </Box>
@@ -43,22 +43,22 @@ export default function Header() {
               labelPlacement="start"
               label=""
               className="rounded-full"
-              sx={{ bgcolor: "secondary.main" }}
+              sx={{ bgcolor: "secondary.dark" }}
             />
-            <Typography className="text-sm text-center font-normal block pl-7 mt-1" sx={{ color: "secondary.main" }}>
+            <Typography className="text-sm text-center font-normal block pl-7 mt-1" sx={{ color: "secondary.dark" }}>
               {useDarkTheme ? "Dark" : "Light"}
             </Typography>
           </Box>
           {/* weather   */}
           <Box className="ml-8">
-            <Typography variant="h6" sx={{ color: "secondary.main" }} className="text-sm">
+            <Typography variant="h6" sx={{ color: "secondary.dark" }} className="text-sm">
               <Image src={sunny} alt="sunny" width={25} height={25} className="mr-2" />
               <span className="text-3xl font-semibold">
                 32<sup className="font-normal">°</sup>
               </span>
               Sunny
             </Typography>
-            <Typography sx={{ color: "secondary.main" }} className="text-[12px] leading-tight flex justify-end">
+            <Typography sx={{ color: "secondary.dark" }} className="text-[12px] leading-tight flex justify-end">
               New York, USA
             </Typography>
           </Box>

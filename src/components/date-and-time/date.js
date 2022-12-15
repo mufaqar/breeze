@@ -11,7 +11,7 @@ export default function DateComp() {
   const event = new Date();
 
   return (
-    <Typography variant="span" className="block text-lg font-normal" sx={{ color: "secondary.main" }}>
+    <Typography variant="span" className="block text-lg font-normal" sx={{ color: "secondary.dark" }}>
       {new Intl.DateTimeFormat("en-US", Dateoptions).format(event)}
     </Typography>
   );
