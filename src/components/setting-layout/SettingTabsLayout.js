@@ -40,7 +40,7 @@ const fonts = [
    },
    {
     type: "Startup",
-    FontFamily: '' 
+    FontFamily: 'Playfair Display' 
    },
    {
     type: "Retro",
@@ -179,17 +179,15 @@ const General = () => {
     dispatch(changeThemeToDarkAndLight(i))
   }
 
-  
-  useEffect(()=>{
-    localStorage.setItem('fontFamily', JSON.stringify(switchFontFamily))
-  })
 
   const changeFont = (font) => {
     console.log('font.......', font)
     setFontType(font.type)
+    localStorage.setItem('fontFamily', JSON.stringify(font.FontFamily))
+    location.reload();
   }
 
-  console.log("🚀 ~ file: SettingTabsLayout.js:135 ~ General ~ theme", theme)
+  // console.log("🚀 ~ file: SettingTabsLayout.js:135 ~ General ~ theme", theme)
 
   return (
     <Box className="px-8 h-[calc(100%-61px)] overflow-y-scroll generalScroll">

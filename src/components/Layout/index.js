@@ -9,7 +9,7 @@ import Header from "../header";
 
 export default function Layout(props) {
   const backgroud_image = useSelector((state) => state.changeBackground.backgroundImageURL);
-  console.log("🚀 ~ file: index.js:7 ~ Layout ~ backgroud_image", backgroud_image);
+  // console.log("🚀 ~ file: index.js:7 ~ Layout ~ backgroud_image", backgroud_image);
   const useDarkTheme = useSelector((state) => state.swithDarkmode.darkMode);
   
 
