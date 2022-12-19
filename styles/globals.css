@@ -220,6 +220,9 @@ input:-internal-autofill-selected {
 .tablist.Mui-selected._dark p{
   color: #3F9BFC !important;
 }
+._Modern, ._Classic, ._Startup, ._Retro, ._Warehouse, ._Quirky{
+  
+}
 
 .TabPanel>div{
   padding:0 ;

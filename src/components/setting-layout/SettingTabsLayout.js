@@ -181,7 +181,7 @@ const General = () => {
   }
 
   const fontFamily = JSON.parse(localStorage.getItem('fontFamily'))
-  // console.log("🚀 ~ file: SettingTabsLayout.js:191 ~ General ~ fontFamily", fontFamily)
+  console.log("🚀 ~ file: SettingTabsLayout.js:191 ~ General ~ fontFamily", fontFamily)
   // console.log("🚀 ~ file: SettingTabsLayout.js:135 ~ General ~ theme", theme)
 
   // localStorage.setItem('dateFormate', JSON.stringify('dddd, MMMM YYYY'))
@@ -263,8 +263,8 @@ const General = () => {
         </Typography>
         <Box className="flex justify-between item-center">
           {fonts.map((font, i) => (
-            <div key={i} className="flex flex-col ml-4 justify-center items-center ">
-              <Box className={`p-4 px-10 rounded-lg cursor-pointer capitalize ${ font.type === fontType ? theme && 'text-white' : 'text-[#78716C]' }`} sx={{ border: 1, 
+            <div key={i} className={`flex flex-col ml-4 justify-center items-center`}>
+              <Box className={`p-4 px-10 rounded-lg cursor-pointer _${font.type} capitalize ${ font.type === fontType ? theme && 'text-white' : 'text-[#78716C]' }`} sx={{ border: 1, 
                 borderColor: `${fontFamily === font.type ? 'primary.main' : 'secondary.main'}` }}
               onClick={()=>changeFont(font)}>Aa</Box>
               <Typography className="text-sm font-semibold mt-2" sx={{ color: 'primary.contrastText' }}>{font.type}</Typography>
