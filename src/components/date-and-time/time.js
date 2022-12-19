@@ -1,4 +1,5 @@
 import { Typography } from "@mui/material";
+var moment = require('moment')
 
 let TimeOptions = {
     // timeZone: 'Asia/Karachi',
@@ -9,10 +10,14 @@ let TimeOptions = {
   },
   TimeFormatter = new Intl.DateTimeFormat([], TimeOptions);
 
+  const TimeFormate = JSON.parse(localStorage.getItem('timeFormate'))
+
+  console.log(moment().format('hh:mm A'))
+
 export default function Time() {
   return (
     <Typography variant="h3" className="font-semibold text-[128px]" sx={{ color: "secondary.dark" }}>
-      {TimeFormatter.format(new Date())}
+    {moment().format(TimeFormate)}
     </Typography>
   );
 }

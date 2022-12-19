@@ -161,13 +161,6 @@ const General = () => {
   const [font,setFont] = React.useState()
   const [fontType,setFontType] = React.useState()
 
-  const handleChange = (event) => {
-    setDateFormate(event.target.value);
-  };
-  const handleTimeFormate = (event) => {
-    setTimeFormate(event.target.value);
-  };
-
   const theme = useSelector((state)=>state.swithDarkmode.darkMode)
   const dispatch = useDispatch()
 
@@ -189,14 +182,23 @@ const General = () => {
 
   const fontFamily = JSON.parse(localStorage.getItem('fontFamily'))
   // console.log("🚀 ~ file: SettingTabsLayout.js:191 ~ General ~ fontFamily", fontFamily)
-
   // console.log("🚀 ~ file: SettingTabsLayout.js:135 ~ General ~ theme", theme)
+
+  localStorage.setItem('dateFormate', JSON.stringify('dddd, MMMM YYYY'))
+  localStorage.setItem('timeFormate', JSON.stringify('HH:mm'))
+
   const dateHandleChange = (e) =>{
     e.preventDefault()
     // setDateFormate(e.target.value)
     localStorage.setItem('dateFormate', JSON.stringify(e.target.value))
     location.reload();
   }
+
+  const handleTimeFormate = (event) => {
+    // setTimeFormate(event.target.value);
+    localStorage.setItem('timeFormate', JSON.stringify(event.target.value))
+    location.reload();
+  };
 
   return (
     <Box className="px-8 h-[calc(100%-61px)] overflow-y-scroll generalScroll">
@@ -309,12 +311,13 @@ const General = () => {
           </Typography>
           <FormControl fullWidth>
             <Select
-              labelId="demo-simple-select-label"
-              id="demo-simple-select"
-              value={timeFormate}
+              labelId="time-select-label"
+              id="time-select"
+              value={JSON.parse(localStorage.getItem('timeFormate'))}
               onChange={handleTimeFormate}
             >
-              <MenuItem value={10} className="flex justify-between text-xs font-medium"> 9:18 PM </MenuItem>
+              <MenuItem value="hh:mm A" className="flex justify-between text-xs font-medium"> 9:18 PM </MenuItem>
+              <MenuItem value="HH:MM" className="flex justify-between text-xs font-medium"> 13:00 </MenuItem>
               
             </Select>
           </FormControl>
