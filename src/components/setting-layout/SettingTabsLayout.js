@@ -378,7 +378,7 @@ const SettingTabsLayout = (props) => {
   const [value, setValue] = useState(1);
   const [isFullWidthPanel, setIsFullWidthPanel] = useState(true);
 
-  const handleChange = (event) => {
+  const handleChange = (event, newValue) => {
     setValue(newValue);
   };
 
