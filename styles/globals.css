@@ -208,13 +208,18 @@ input:-internal-autofill-selected {
 .tablist svg{
   margin-bottom: 0 !important;
 }
-.tablist.Mui-selected.css-64qqei-MuiButtonBase-root-MuiTab-root{
+.tablist.Mui-selected{
   background: rgba(63, 155, 252, 0.15) !important;
 }
-.tablist.Mui-selected.css-330hyd-MuiButtonBase-root-MuiTab-root{
+.tablist.Mui-selected._dark{
   background: #212C39 !important;
 }
-
+.tablist.Mui-selected p{
+  color: #3F9BFC !important;
+}
+.tablist.Mui-selected._dark p{
+  color: #3F9BFC !important;
+}
 
 .TabPanel>div{
   padding:0 ;

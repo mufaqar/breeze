@@ -184,8 +184,8 @@ const General = () => {
   // console.log("🚀 ~ file: SettingTabsLayout.js:191 ~ General ~ fontFamily", fontFamily)
   // console.log("🚀 ~ file: SettingTabsLayout.js:135 ~ General ~ theme", theme)
 
-  localStorage.setItem('dateFormate', JSON.stringify('dddd, MMMM YYYY'))
-  localStorage.setItem('timeFormate', JSON.stringify('HH:mm'))
+  // localStorage.setItem('dateFormate', JSON.stringify('dddd, MMMM YYYY'))
+  // localStorage.setItem('timeFormate', JSON.stringify('HH:mm'))
 
   const dateHandleChange = (e) =>{
     e.preventDefault()
@@ -384,6 +384,7 @@ const SettingTabsLayout = (props) => {
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
+  const theme = useSelector((state)=>state.swithDarkmode.darkMode)
 
   return (
     <Box
@@ -421,7 +422,8 @@ const SettingTabsLayout = (props) => {
         {panelList.map((tabPanel, index) => (
           <Tab
             key={index}
-            className={`tablist`}
+            className={`tablist ${theme && '_dark'}`}
+            indicatorColor="secondary.main"
             sx={{
               display: "flex",
               flexDirection: "row",
