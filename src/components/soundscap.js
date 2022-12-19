@@ -1,17 +1,14 @@
-import { Button, Paper, Slider, Stack, Typography } from "@mui/material";
+import { Paper, Slider, Typography } from "@mui/material";
 import { Box } from "@mui/system";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import RemoveIcon from "@mui/icons-material/Remove";
-import Image from "next/image";
 import Volumeicon from "../../public/assets/svg/volumeicon.svg";
+import { useSelector } from "react-redux";
 
 export default function Soundscap({ state, data }) {
   const [value, setValue] = useState(30);
   const [generalValue, setGeneralValue] = useState(30);
-  const [activeVolumeSlider, setActiveVolumeSlider] = useState(null);
-  const activeSound = [];
   const [soundScapeArr, setsoundScapeArr] = useState([]);
-  console.log("🚀 ~ soundScapeArr", soundScapeArr);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -42,6 +39,7 @@ export default function Soundscap({ state, data }) {
       }
     }
   };
+  const theme = useSelector((state)=>state.swithDarkmode.darkMode)
 
   return (
     <>
@@ -66,8 +64,8 @@ export default function Soundscap({ state, data }) {
                 aria-label="Volume"
                 value={generalValue}
                 onChange={handleGeneralChange}
-                className="w-36"
-                sx={{ color: "primary.dark" }}
+                className={`w-36 ${theme ? 'text-white' : 'text-[#1C1917]'}`}
+                // sx={{ color: "primary.dark" }}
               />
             )}
             <RemoveIcon
