@@ -5,8 +5,7 @@ import { neutral, success, warning, danger } from './colors'
 import { useSelector } from "react-redux";
 
 
-// const font = localStorage.getItem("fontFamily") || "" 
-// console.log("🚀 ~ file: themes.ts:9 ~ font", font)
+const font = localStorage.getItem("fontFamily") || ""
 
 export const darkTheme = createTheme({
   
@@ -26,7 +25,7 @@ export const darkTheme = createTheme({
     }
   },
   typography: {
-    fontFamily: [`Inter`].join(','),
+    fontFamily: [`${font}`].join(','),
   },
 
 
@@ -66,7 +65,7 @@ export const lightTheme = createTheme({
 
   },
   typography: {
-    fontFamily: [`Inter`].join(','),
+    fontFamily: [`${font}`].join(','),
   },
 
   components: {
