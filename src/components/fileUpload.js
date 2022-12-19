@@ -4,6 +4,9 @@ import React, { useCallback, useEffect, useMemo, useState } from "react";
 import { useDropzone } from "react-dropzone";
 import { Box } from "@mui/system";
 import Image from "next/image";
+import { useSelector } from "react-redux";
+import PermMediaIcon from '@mui/icons-material/PermMedia';
+
 
 const baseStyle = {
   display: "flex",
@@ -15,7 +18,7 @@ const baseStyle = {
   borderRadius: 2,
   borderColor: "#78716C",
   borderStyle: "dashed",
-  backgroundColor: "#F5F5F5",
+  // backgroundColor: "#F5F5F5",
   color: "#bdbdbd",
   transition: "border .3s ease-in-out",
 };
@@ -76,13 +79,16 @@ function DropzoneComponent(props) {
     [files]
   );
 
+  const theme = useSelector((state)=>state.swithDarkmode.darkMode)
+  
+
   return (
     <>
-      <section>
-        <div {...getRootProps({ style })}>
+      <section >
+        <div {...getRootProps({ style })} className={theme ? 'bg-[#292524]' : 'bg-[#F5F5F5]'}>
           <input {...getInputProps()} />
-          <MediaIcon />
-          <Typography className="font-semibold text-[#1C1917] text-xl mt-4">Drop or Select Image</Typography>
+          <PermMediaIcon />
+          <Typography className={`font-semibold text-xl mt-4 ${theme ? 'text-white' : 'text-[#1C1917]'}`}>Drop or Select Image</Typography>
           <Typography className="text-base mt-3 font-normal text-[#A3A3A3]">
             Drag an image here or <span className="_spanclr underline text-center cursor-pointer">browse</span> for an image to upload
           </Typography>
