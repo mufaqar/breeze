@@ -156,7 +156,7 @@ const General = () => {
   const switchFontFamily = useSelector((state) => state.switchFont.fontFamily);
 
 
-  const [dateFormate, setDateFormate] = React.useState("Friday, Jul 8");
+  // const [dateFormate, setDateFormate] = React.useState("Friday, Jul 8");
   const [timeFormate, setTimeFormate] = React.useState("9:18 PM");
   const [font,setFont] = React.useState()
   const [fontType,setFontType] = React.useState()
@@ -188,9 +188,15 @@ const General = () => {
   }
 
   const fontFamily = JSON.parse(localStorage.getItem('fontFamily'))
-  console.log("🚀 ~ file: SettingTabsLayout.js:191 ~ General ~ fontFamily", fontFamily)
+  // console.log("🚀 ~ file: SettingTabsLayout.js:191 ~ General ~ fontFamily", fontFamily)
 
   // console.log("🚀 ~ file: SettingTabsLayout.js:135 ~ General ~ theme", theme)
+  const dateHandleChange = (e) =>{
+    e.preventDefault()
+    // setDateFormate(e.target.value)
+    localStorage.setItem('dateFormate', JSON.stringify(e.target.value))
+    location.reload();
+  }
 
   return (
     <Box className="px-8 h-[calc(100%-61px)] overflow-y-scroll generalScroll">
@@ -283,13 +289,13 @@ const General = () => {
             <Select
               labelId="demo-simple-select-label"
               id="demo-simple-select"
-              value={dateFormate}
-              onChange={handleChange}
+              value={JSON.parse(localStorage.getItem('dateFormate'))}
+              onChange={dateHandleChange}
             >
-              <MenuItem value={10} className="flex justify-between text-xs font-medium"> Friday, Jul 8 </MenuItem>
-              <MenuItem value={10} className="flex justify-between text-xs font-medium"> 2022-07-08</MenuItem>
-              <MenuItem value={10} className="flex justify-between text-xs font-medium"> 08/07/2022</MenuItem>
-              <MenuItem value={10} className="flex justify-between text-xs font-medium"> 07/08/2022</MenuItem>
+              <MenuItem value='dddd, MMMM YYYY' className="flex justify-between text-xs font-medium"> Friday, Jul 8 </MenuItem>
+              <MenuItem value='YYYY-MM-DD' className="flex justify-between text-xs font-medium"> 2022-07-08</MenuItem>
+              <MenuItem value='DD/MM/YYYY' className="flex justify-between text-xs font-medium"> 08/07/2022</MenuItem>
+              <MenuItem value='MM/DD/YYYY' className="flex justify-between text-xs font-medium"> 07/08/2022</MenuItem>
             </Select>
           </FormControl>
         </Box>
@@ -372,7 +378,7 @@ const SettingTabsLayout = (props) => {
   const [value, setValue] = useState(1);
   const [isFullWidthPanel, setIsFullWidthPanel] = useState(true);
 
-  const handleChange = (event, newValue) => {
+  const handleChange = (event) => {
     setValue(newValue);
   };
 
