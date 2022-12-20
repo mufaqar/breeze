@@ -3,13 +3,14 @@ import { Box } from "@mui/system";
 import React, { useState } from "react";
 import RemoveIcon from "@mui/icons-material/Remove";
 import Volumeicon from "../../public/assets/svg/volumeicon.svg";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { sounscapeMesssage } from "../store/features/soundscape/soundScapeSlice";
 
 export default function Soundscap({ state, data }) {
   const [value, setValue] = useState(30);
   const [generalValue, setGeneralValue] = useState(30);
   const [soundScapeArr, setsoundScapeArr] = useState([]);
-
+  const dispatch = useDispatch()
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
@@ -28,6 +29,7 @@ export default function Soundscap({ state, data }) {
     } else {
       if (soundScapeArr.length >= 4) {
         const FirtItem = soundScapeArr[0];
+        dispatch(sounscapeMesssage(true))
         setsoundScapeArr([...soundScapeArr, id]);
         setsoundScapeArr((current) =>
           current.filter((element) => {
@@ -94,6 +96,7 @@ export default function Soundscap({ state, data }) {
           ))}
         </Box>
       </Paper>
+      
     </>
   );
 }
