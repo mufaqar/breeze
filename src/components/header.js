@@ -43,7 +43,7 @@ export default function Header() {
           <Box className="flex justify-center max-w-[225px] min-w-[225px] items-cente p-[6px] bg-white/20 _border-white rounded-full">
             <Link href="/">
               <Box
-                className={`bg-white text-black rounded-full px-4 py-2 flex flex-col justify-center items-center cursor-pointer ${
+                className={`bg-white text-black rounded-full px-5 py-2 flex flex-col justify-center items-center cursor-pointer ${
                   pathname === "/" ? "bg-white text-black" : "text-white bg-transparent"
                 }`}
               >
@@ -67,7 +67,7 @@ export default function Header() {
             </Link>
             <Link href="/todo">
               <Box
-                className={`bg-white text-black rounded-full px-4 py-2 flex flex-col justify-center items-center cursor-pointer ${
+                className={`bg-white text-black rounded-full px-5 py-2 flex flex-col justify-center items-center cursor-pointer ${
                   pathname === "/todo" ? "bg-white text-black" : "text-white bg-transparent"
                 }`}
               >
