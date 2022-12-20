@@ -41,30 +41,35 @@ export default function Header() {
         {/* tabs */}
         <Box className="">
           <Box className="flex justify-center items-cente p-[6px] bg-white/20 _border-white rounded-full">
+           
             <Link href="/">
               <Box
-                className={`rounded-full px-5 py-2 flex flex-col justify-center items-center cursor-pointer ${
+                className={`bg-white text-black rounded-full px-5 py-2 flex flex-col justify-center items-center cursor-pointer ${
                   pathname === "/" ? "bg-white text-black" : "bg-transparent"
                 }`}
               >
                 <div className="flex items-center space-x-1">
                   <HomeOutlinedIcon />
-                  <span className="text-sm font-semibold">Home</span>
+                  {
+                    pathname === '/' && <span className="text-sm font-semibold">Home</span>
+                  }
                 </div>
               </Box>
             </Link>
             <Link href="/pomodoro">
-              <Box
-                className={`bg-white text-black rounded-full px-5 py-2 flex flex-col justify-center items-center cursor-pointer ${
-                  pathname === "/pomodoro" ? "bg-white text-black" : "bg-transparent"
-                }`}
-              >
-                <div className="flex items-center space-x-1">
-                  <TimerOutlinedIcon />
-                  <span className="text-sm font-semibold">Pomodoro</span>
-                </div>
-              </Box>
-            </Link>
+            <Box
+              className={`bg-white text-black rounded-full px-5 py-2 flex flex-col justify-center items-center cursor-pointer ${
+                pathname === "/pomodoro" ? "bg-white text-black" : "bg-transparent"
+              }`}
+            >
+              <div className="flex items-center space-x-1">
+                <TimerOutlinedIcon />
+                {
+                  pathname === '/pomodoro' && <span className="text-sm font-semibold">Pomodoro</span>
+                }
+              </div>
+            </Box>
+          </Link>
             <Link href="/todo">
               <Box
                 className={`bg-white text-black rounded-full px-5 py-2 flex flex-col justify-center items-center cursor-pointer ${
@@ -73,13 +78,15 @@ export default function Header() {
               >
                 <div className="flex items-center space-x-1">
                   <TaskAltOutlinedIcon />
-                  <span className="text-sm font-semibold">Todo</span>
+                  {
+                    pathname === '/todo' && <span className="text-sm font-semibold">Todo</span>
+                  }
                 </div>
               </Box>
             </Link>
           </Box>
         </Box>
-        
+
         <Box className="flex justify-end items-center w-1/3 switch">
           <Box className="flex justify-center items-center flex-col pt-3">
             <FormControlLabel
