@@ -26,7 +26,7 @@ export default function Soundscap({ state, data }) {
         })
       );
     } else {
-      if (soundScapeArr.length >= 3) {
+      if (soundScapeArr.length >= 4) {
         const FirtItem = soundScapeArr[0];
         setsoundScapeArr([...soundScapeArr, id]);
         setsoundScapeArr((current) =>

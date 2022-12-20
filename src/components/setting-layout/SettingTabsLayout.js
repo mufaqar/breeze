@@ -27,6 +27,7 @@ import BackgroundSettingTab from '../background.setting.tab'
 import { useDispatch, useSelector } from "react-redux";
 import { changeThemeToDarkAndLight } from "../../store/features/themeFeatures/switchtheme";
 import { setFont } from '../../store/features/themeFeatures/fontsSlice'
+import ShowSetting from '../showSetting'
 
 
 const fonts = [
@@ -55,37 +56,6 @@ const fonts = [
     FontFamily: '' 
    },
 ]
-
-const swithData = [
-  {
-    id: 1,
-    name: "Link",
-  },
-  {
-    id: 2,
-    name: "Bookmarks Bar",
-  },
-  {
-    id: 3,
-    name: "Weather",
-  },
-  {
-    id: 4,
-    name: "Greetings",
-  },
-  {
-    id: 5,
-    name: "Todo",
-  },
-  {
-    id: 6,
-    name: "Quotes",
-  },
-  {
-    id: 7,
-    name: "Search",
-  },
-];
 
 const BpIcon = styled("span")(({ theme }) => ({
   borderRadius: "50%",
@@ -134,28 +104,10 @@ function BpRadio(props) {
   return <Radio disableRipple color="default" checkedIcon={<BpCheckedIcon />} icon={<BpIcon />} {...props} />;
 }
 
-const SwitchSetting = ({ title }) => {
-  const theme = useSelector((state)=>state.swithDarkmode.darkMode)
-  
-  return (
-    <Box className="flex justify-between item-center py-2" sx={{ borderBottom: 1, borderColor: "secondary.main" }}>
-      <Typography
-        component="h4"
-        className="text-base font-semibold flex flex-col items-center justify-center"
-        sx={{ color: "secondary.light" }}
-      >
-        {title}
-      </Typography>
-      <input class={`mui-switch ${theme ? 'bg-[#44403C] border-transparent' : ''}`} type="checkbox"></input>
-    </Box>
-  );
-};
 
 const General = () => {
 
   const switchFontFamily = useSelector((state) => state.switchFont.fontFamily);
-
-
   // const [dateFormate, setDateFormate] = React.useState("Friday, Jul 8");
   const [timeFormate, setTimeFormate] = React.useState("9:18 PM");
   const [font,setFont] = React.useState()
@@ -181,11 +133,10 @@ const General = () => {
   }
 
   const fontFamily = JSON.parse(localStorage.getItem('fontFamily'))
-  console.log("🚀 ~ file: SettingTabsLayout.js:191 ~ General ~ fontFamily", fontFamily)
+  // console.log("🚀 ~ file: SettingTabsLayout.js:191 ~ General ~ fontFamily", fontFamily)
   // console.log("🚀 ~ file: SettingTabsLayout.js:135 ~ General ~ theme", theme)
-
   // localStorage.setItem('dateFormate', JSON.stringify('dddd, MMMM YYYY'))
-  // localStorage.setItem('timeFormate', JSON.stringify('HH:mm'))
+  
 
   const dateHandleChange = (e) =>{
     e.preventDefault()
@@ -205,9 +156,10 @@ const General = () => {
       <Typography component="h6" className="uppercase text-lg mb-6 mt-3 font-semibold" sx={{ color: "secondary.contrastText"}}>
         Show
       </Typography>
-      {swithData.map((item, i) => (
+      <ShowSetting/>
+      {/*swithData.map((item, i) => (
         <SwitchSetting title={item.name} key={i} />
-      ))}
+      ))*/}
       <Typography component="h6" className="uppercase text-lg mb-3 mt-10 font-semibold" sx={{ color: "secondary.contrastText"}}>
         APPEARANCE
       </Typography>
