@@ -27,6 +27,7 @@ import Delete from "../../public/assets/svg/delete.svg";
 import Pen from "../../public/assets/svg/pen.svg";
 import ClearIcon from "@mui/icons-material/Clear";
 import styled from "@emotion/styled";
+import { useSelector } from "react-redux";
 
 const BpIcon = styled("span")(({ theme }) => ({
   borderRadius: 6,
@@ -135,6 +136,8 @@ export default function PomodoroModule() {
     }
     return setEditlist(id);
   };
+
+  const theme = useSelector((state)=>state.swithDarkmode.darkMode)
 
   // taskList component
   const TaskList = ({ taskList }) => {
@@ -282,11 +285,13 @@ export default function PomodoroModule() {
                   </Button>
                 )}
 
-                <MoreVertIcon
-                  sx={{ color: "secondary.main" }}
-                  className="cursor-pointer"
-                  onClick={() => setClearTask(!clearTask)}
-                />
+                <div className={clearTask ? theme ? '_border _dark-border' : '_border _light-border' : '_noborder'}>
+                  <MoreVertIcon
+                    sx={{ color: "secondary.main" }}
+                    className="cursor-pointer"
+                    onClick={() => setClearTask(!clearTask)}
+                  />
+                </div>
                 {clearTask && (
                   <EditBtn
                     text1="Clear finished task"
