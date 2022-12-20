@@ -391,3 +391,9 @@ input:-internal-autofill-selected {
   padding: 4px;
   border-radius: 50px;
 }
+._border-white{
+  border: 1px solid white;
+}
+a{
+  text-decoration: none;
+}

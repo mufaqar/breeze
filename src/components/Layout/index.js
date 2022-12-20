@@ -24,7 +24,6 @@ export default function Layout(props) {
   const useDarkTheme = useSelector((state) => state.swithDarkmode.darkMode);
   const Messsage = useSelector((state) => state.soundscape.message);
 
-
   const dispatch = useDispatch()
   const fontFamily = localStorage.getItem("fontFamily");
 
@@ -136,7 +135,6 @@ export default function Layout(props) {
         <section id="main">
           <video
             src={backgroud_image}
-            // src="https://res.cloudinary.com/oscarjite/video/upload/v1662154978/walking_on_the_moon_j5tytl.mp4"
             muted
             autoplay="true"
             loop="true"
