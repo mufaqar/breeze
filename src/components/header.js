@@ -44,7 +44,7 @@ export default function Header() {
             <Link href="/">
               <Box
                 className={`bg-white text-black rounded-full px-4 py-2 flex flex-col justify-center items-center cursor-pointer ${
-                  pathname === "/" ? "bg-white text-black" : "bg-transparent"
+                  pathname === "/" ? "bg-white text-black" : "text-white bg-transparent"
                 }`}
               >
                 <div className="flex items-center space-x-1">
@@ -56,7 +56,7 @@ export default function Header() {
             <Link href="/pomodoro">
               <Box
                 className={`bg-white text-black rounded-full px-3 py-2 flex flex-col justify-center items-center cursor-pointer ${
-                  pathname === "/pomodoro" ? "bg-white text-black" : "bg-transparent"
+                  pathname === "/pomodoro" ? "bg-white text-black" : "text-white bg-transparent"
                 }`}
               >
                 <div className="flex items-center space-x-1">
@@ -68,7 +68,7 @@ export default function Header() {
             <Link href="/todo">
               <Box
                 className={`bg-white text-black rounded-full px-4 py-2 flex flex-col justify-center items-center cursor-pointer ${
-                  pathname === "/todo" ? "bg-white text-black" : "bg-transparent"
+                  pathname === "/todo" ? "bg-white text-black" : "text-white bg-transparent"
                 }`}
               >
                 <div className="flex items-center space-x-1">
