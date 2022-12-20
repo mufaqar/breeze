@@ -36,6 +36,7 @@ export default function ShowSetting() {
           className={`mui-switch ${theme ? "bg-[#44403C] border-transparent" : ""}`}
           type="checkbox"
           name="link"
+          checked={linkhideshow}
           value={linkhideshow}
           onChange={() => dispatch(setlink())}
         ></input>
@@ -53,6 +54,7 @@ export default function ShowSetting() {
           className={`mui-switch ${theme ? "bg-[#44403C] border-transparent" : ""}`}
           type="checkbox"
           name="bookmarks"
+          checked={bookmarkshideshow}
           value={bookmarkshideshow}
           onChange={() => dispatch(setbookmarks())}
         ></input>
@@ -70,6 +72,7 @@ export default function ShowSetting() {
           className={`mui-switch ${theme ? "bg-[#44403C] border-transparent" : ""}`}
           type="checkbox"
           name="weather"
+          checked={weatherhideshow}
           value={weatherhideshow}
           onChange={() => dispatch(setweather())}
         ></input>
@@ -87,6 +90,7 @@ export default function ShowSetting() {
           className={`mui-switch ${theme ? "bg-[#44403C] border-transparent" : ""}`}
           type="checkbox"
           name="greetings"
+          checked={greetingshideshow}
           value={greetingshideshow}
           onChange={() => dispatch(setgreetings())}
         ></input>
@@ -105,6 +109,7 @@ export default function ShowSetting() {
           type="checkbox"
           name="Todo"
           value={todohideshow}
+          checked={todohideshow}
           onChange={() => dispatch(settodo())}
         ></input>
       </Box>
@@ -121,6 +126,7 @@ export default function ShowSetting() {
           className={`mui-switch ${theme ? "bg-[#44403C] border-transparent" : ""}`}
           type="checkbox"
           name="quotes"
+          checked={quoteshideshow}
           value={quoteshideshow}
           onChange={() => dispatch(setquotes())}
         ></input>
@@ -138,6 +144,7 @@ export default function ShowSetting() {
           className={`mui-switch ${theme ? "bg-[#44403C] border-transparent" : ""}`}
           type="checkbox"
           name="search"
+          checked={searchhideshow}
           value={searchhideshow}
           onChange={() => dispatch(setsearch())}
         ></input>

@@ -261,8 +261,20 @@ input:-internal-autofill-selected {
   height: 120px;
   border-radius: 10px;
   position: relative !important;
+  border: 3px solid transparent
   /* height: unset !important; */
 }
+.image-container .solid , .image-container .videobg{
+  border: 3px solid transparent
+}
+.image-container .image._active-bg, .image-container .solid._active-bg{
+  border: 3px solid #3F9BFC !important;
+}
+
+.videobg._active-bg{
+  border: 4px solid #3F9BFC !important;
+}
+
 @media(min-width: 1500px){
   .image-container .image {
     height: 150px;
@@ -317,6 +329,9 @@ input:-internal-autofill-selected {
   z-index: 100000;
 }
 
+._relative{
+  position: relative !important;
+}
 
 .btn{
   border: 1px solid rgba(255, 255, 255, 0.1);
@@ -331,4 +346,25 @@ input:-internal-autofill-selected {
   height: 100%;
   object-fit: cover;
   z-index: -1111 !important;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888; 
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555; 
 }

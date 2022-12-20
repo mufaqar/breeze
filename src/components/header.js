@@ -1,12 +1,11 @@
 import { Box, FormControlLabel, Switch, Typography } from "@mui/material";
 import Image from "next/image";
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { sunny } from "../../public/assets/export";
 import { changeThemeToDarkAndLight } from "../store/features/themeFeatures/switchtheme";
 
 export default function Header() {
-
   let [useDarkTheme, setUseDarkTheme] = useState(false);
   const dispatch = useDispatch();
 
@@ -15,12 +14,12 @@ export default function Header() {
   };
 
   if (useDarkTheme) {
-    dispatch(changeThemeToDarkAndLight(true))
+    dispatch(changeThemeToDarkAndLight(true));
   } else {
-    dispatch(changeThemeToDarkAndLight(false))
+    dispatch(changeThemeToDarkAndLight(false));
   }
 
-  
+  const weatherhideshow = useSelector((state) => state.hideShow.weather);
 
   return (
     <>
@@ -50,18 +49,20 @@ export default function Header() {
             </Typography>
           </Box>
           {/* weather   */}
-          <Box className="ml-8">
-            <Typography variant="h6" sx={{ color: "secondary.dark" }} className="text-sm">
-              <Image src={sunny} alt="sunny" width={25} height={25} className="mr-2" />
-              <span className="text-3xl font-semibold">
-                32<sup className="font-normal">°</sup>
-              </span>
-              Sunny
-            </Typography>
-            <Typography sx={{ color: "secondary.dark" }} className="text-[12px] leading-tight flex justify-end">
-              New York, USA
-            </Typography>
-          </Box>
+          {!weatherhideshow && (
+            <Box className="ml-8">
+              <Typography variant="h6" sx={{ color: "secondary.dark" }} className="text-sm">
+                <Image src={sunny} alt="sunny" width={25} height={25} className="mr-2" />
+                <span className="text-3xl font-semibold">
+                  32<sup className="font-normal">°</sup>
+                </span>
+                Sunny
+              </Typography>
+              <Typography sx={{ color: "secondary.dark" }} className="text-[12px] leading-tight flex justify-end">
+                New York, USA
+              </Typography>
+            </Box>
+          )}
         </Box>
       </Box>
     </>

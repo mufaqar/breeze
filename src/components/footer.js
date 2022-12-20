@@ -20,6 +20,7 @@ import Link from "next/link";
 import GeneralSetting from '../components/general-setting'
 import SettingsIcon from '@mui/icons-material/Settings';
 import QueueMusicIcon from '@mui/icons-material/QueueMusic';
+import { useSelector } from "react-redux";
 
 const style = {
   position: 'absolute',
@@ -112,6 +113,8 @@ export default function Footer() {
   const closeSetting = () => {
     setOpen(false);
   }
+  const quoteshideshow = useSelector((state) => state.hideShow.quotes);
+
 
   return (
     <>
@@ -121,7 +124,7 @@ export default function Footer() {
             <Typography>Nattu Adnan (Unsplash)</Typography>
           </Box>
           <Box className="w-1/3">
-            <Typography className="text-center">“Don’t be perfect, just keep getting better.”</Typography>
+            {!quoteshideshow &&  <Typography className="text-center">“Don’t be perfect, just keep getting better.”</Typography>}
           </Box>
           <Box className="space-x-5 flex justify-end w-1/3">
             <Button onClick={() => setOpenSoundscap(!openSoundscap)} className="flex  items-center">

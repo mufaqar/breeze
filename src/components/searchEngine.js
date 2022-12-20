@@ -2,11 +2,10 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
-import { Google, Bing, DuckDuckGo, Filter } from '../../public/assets/export'
+import { Google, Bing, DuckDuckGo, Filter } from "../../public/assets/export";
 import { Box, IconButton, Paper, TextField, Typography } from "@mui/material";
 import CustomIconButton from "./iconButton";
-
-
+import { useSelector } from "react-redux";
 
 export default function SearchEngine() {
   const [input, setInput] = useState();
@@ -19,10 +18,10 @@ export default function SearchEngine() {
     }
   };
 
-  const LogoChange = (e) =>{
-    setChangeEngineLogo(e)
-    setOpen(false)
-  }
+  const LogoChange = (e) => {
+    setChangeEngineLogo(e);
+    setOpen(false);
+  };
 
   const ChangeSearchEngine = () => {
     return (
@@ -56,37 +55,39 @@ export default function SearchEngine() {
   const HandleOpenSearchEng = () => {
     setOpen(!open);
   };
-
+  const searchhideshow = useSelector((state) => state.hideShow.search);
   return (
     <>
-      <Paper className="mt-6 p-[2px] rounded-full px-2 flex items-center">
-        <Box onClick={HandleOpenSearchEng} className="min-w-[60px]  flex justify-center items-center">
-          <Image src={changeEngineLogo} alt="google" width={20} height={20} />
-          <KeyboardArrowDownIcon sx={{ color: "secondary.lightGray" }} />
-        </Box>
-        <TextField
-          type="text"
-          className=" bg-transparent w-[360px] placeholder:text-sm placeholder:text-[#A3A3A3]"
-          placeholder="Search for everything"
-          variant="standard"
-          name="google"
-          onKeyDown={handleKeyPress}
-          value={input}
-          onChange={(e) => setInput(e.target.value)}
-          InputProps={{
-            disableUnderline: true,
-          }}
-        />
-        <IconButton>
-          <Image src={Filter} alt="google" />
-        </IconButton>
+      {!searchhideshow && (
+        <Paper className="mt-6 p-[2px] rounded-full px-2 flex items-center">
+          <Box onClick={HandleOpenSearchEng} className="min-w-[60px]  flex justify-center items-center">
+            <Image src={changeEngineLogo} alt="google" width={20} height={20} />
+            <KeyboardArrowDownIcon sx={{ color: "secondary.lightGray" }} />
+          </Box>
+          <TextField
+            type="text"
+            className=" bg-transparent w-[360px] placeholder:text-sm placeholder:text-[#A3A3A3]"
+            placeholder="Search for everything"
+            variant="standard"
+            name="google"
+            onKeyDown={handleKeyPress}
+            value={input}
+            onChange={(e) => setInput(e.target.value)}
+            InputProps={{
+              disableUnderline: true,
+            }}
+          />
+          <IconButton>
+            <Image src={Filter} alt="google" />
+          </IconButton>
 
-        {open && (
-          <Paper className={`fixed -bottom-[150px] p-3 z-10`} sx={{borderRadius: 2}}>
-            <ChangeSearchEngine />
-          </Paper>
-        )}
-      </Paper>
+          {open && (
+            <Paper className={`fixed -bottom-[150px] p-3 z-10`} sx={{ borderRadius: 2 }}>
+              <ChangeSearchEngine />
+            </Paper>
+          )}
+        </Paper>
+      )}
     </>
   );
 }
