@@ -40,7 +40,7 @@ export default function Header() {
         </Box>
         {/* tabs */}
         <Box className="">
-          <Box className="flex justify-center  items-cente p-[6px] bg-white/20 _border-white rounded-full">
+          <Box className="flex justify-center  items-cente p-[6px] bg-white/50 _border-white rounded-full">
             <Link href="/">
               <Box
                 className={`bg-white text-white rounded-full px-5 py-2 flex flex-col justify-center items-center cursor-pointer ${
