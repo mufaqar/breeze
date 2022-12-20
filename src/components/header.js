@@ -40,10 +40,10 @@ export default function Header() {
         </Box>
         {/* tabs */}
         <Box className="">
-          <Box className="flex justify-center max-w-[225px] min-w-[225px] items-cente p-[6px] bg-white/20 _border-white rounded-full">
+          <Box className="flex justify-center  items-cente p-[6px] bg-white/20 _border-white rounded-full">
             <Link href="/">
               <Box
-                className={`bg-white text-black rounded-full px-5 py-2 flex flex-col justify-center items-center cursor-pointer ${
+                className={`bg-white text-white rounded-full px-5 py-2 flex flex-col justify-center items-center cursor-pointer ${
                   pathname === "/" ? "bg-white text-black" : "text-white bg-transparent"
                 }`}
               >
@@ -55,11 +55,11 @@ export default function Header() {
             </Link>
             <Link href="/pomodoro">
               <Box
-                className={`bg-white text-black rounded-full px-3 py-2 flex flex-col justify-center items-center cursor-pointer ${
-                  pathname === "/pomodoro" ? "bg-white text-black" : "text-white bg-transparent"
+                className={`bg-white text-white rounded-full px-3 py-2 flex flex-col justify-center items-center cursor-pointer ${
+                  pathname === "/pomodoro" ? "bg-white text-black" : "bg-transparent"
                 }`}
               >
-                <div className="flex items-center space-x-1">
+                <div className={`flex items-center space-x-1`}>
                   <TimerOutlinedIcon />
                   {pathname === "/pomodoro" && <span className="text-sm font-semibold">Pomodoro</span>}
                 </div>
@@ -67,7 +67,7 @@ export default function Header() {
             </Link>
             <Link href="/todo">
               <Box
-                className={`bg-white text-black rounded-full px-5 py-2 flex flex-col justify-center items-center cursor-pointer ${
+                className={`bg-white text-white rounded-full px-5 py-2 flex flex-col justify-center items-center cursor-pointer ${
                   pathname === "/todo" ? "bg-white text-black" : "text-white bg-transparent"
                 }`}
               >
