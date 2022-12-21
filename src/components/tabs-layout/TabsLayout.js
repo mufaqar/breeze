@@ -198,7 +198,7 @@ const TabsLayout = (props) => {
               minHeight: "auto",
               minWidth: !isFullWidthPanel && "auto",
             }}
-            icon={<Box className={`rounded-full p-[6px] mt-[5px]`} style={{ background: tabPanel.color }}></Box>}
+            icon={<Box className={`rounded-full p-[6px] mt-[6px]`} style={{ background: tabPanel.color }}></Box>}
             label={
               <Stack flex={1} direction="row" justifyContent="space-between" alignItems="center" className="">
                 {isFullWidthPanel && (
@@ -214,14 +214,12 @@ const TabsLayout = (props) => {
             {...a11yProps(index)}
           />
         ))}
-      </Tabs>
-
-      <Tab>
-        <Button variant="outlined" startIcon={<AddOutlinedIcon />}>
-          Delete
+        <Box className="px-4 mt-4">
+        <Button variant="outlined" className="text-sm capitalize border-none p-2 font-semibold" startIcon={<AddOutlinedIcon />}>
+          New List
         </Button>
-      </Tab>
-
+        </Box>
+      </Tabs>
 
       {children.map((item, index) => (
         <TabPanel value={value} index={index + 1} key={index}>
