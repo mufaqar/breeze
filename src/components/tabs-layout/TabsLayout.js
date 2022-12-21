@@ -121,9 +121,10 @@ const TabsLayout = (props) => {
   const handleBadge = (event) => {
     setListColor(event.target.value);
   };
-  
-  const SaveList = (listColor,listName) => {
-    dispatch(addNewList(listColor,listName))
+
+  const SaveList = () => {
+    const data = {listColor, listName}
+    dispatch(addNewList(data))
     setListColor('')
     setListName('')
   }
