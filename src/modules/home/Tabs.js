@@ -7,13 +7,22 @@ const HomeModule = () => {
         <>
             <TabsLayout homeModuleData={homeModuleData} >
                 <>
-                    Item One sdf sdfjl
+                    Item One 
                 </>
                 <>
                     Item Two
                 </>
                 <>
                     Item Three
+                </>
+                <>
+                    project
+                </>
+                <>
+                    personal
+                </>
+                <>
+                    work
                 </>
                 
             </TabsLayout>
