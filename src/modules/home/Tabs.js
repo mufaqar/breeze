@@ -1,5 +1,6 @@
 import React from 'react'
 import TabsLayout from "../../components/tabs-layout/TabsLayout";
+import TodoHome from '../../components/todo/home';
 import { homeModuleData } from "../../mockData/home"
 
 const HomeModule = () => {
@@ -7,7 +8,7 @@ const HomeModule = () => {
         <>
             <TabsLayout homeModuleData={homeModuleData} >
                 <>
-                    Item One 
+                    <TodoHome/>
                 </>
                 <>
                     Item Two

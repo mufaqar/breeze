@@ -214,14 +214,15 @@ input:-internal-autofill-selected {
 .tablist.Mui-selected._dark, .darkTodoTabs .Mui-selected{
   background: #212C39 !important;
 }
+.darkTodoTabs .Mui-selected .title, .lightTodoTabs .Mui-selected .title{
+  font-weight: 500 !important;
+}
+
 .tablist.Mui-selected p{
   color: #3F9BFC !important;
 }
 .tablist.Mui-selected._dark p{
   color: #3F9BFC !important;
-}
-._Modern, ._Classic, ._Startup, ._Retro, ._Warehouse, ._Quirky{
-  
 }
 
 .TabPanel>div{

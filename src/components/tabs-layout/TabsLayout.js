@@ -164,7 +164,7 @@ const TabsLayout = (props) => {
             label={
               <Stack flex={1} direction="row" justifyContent="space-between" alignItems="center" className="">
                 {isFullWidthPanel && (
-                  <Typography textTransform="capitalize" className="text-sm" fontWeight={400}>
+                  <Typography textTransform="capitalize" className="text-sm title" fontWeight={400}>
                     {tabPanel.title}
                   </Typography>
                 )}
@@ -202,7 +202,7 @@ const TabsLayout = (props) => {
             label={
               <Stack flex={1} direction="row" justifyContent="space-between" alignItems="center" className="">
                 {isFullWidthPanel && (
-                  <Typography textTransform="capitalize" className="text-sm" fontWeight={400}>
+                  <Typography textTransform="capitalize" className="text-sm title" fontWeight={400}>
                     {tabPanel.title}
                   </Typography>
                 )}
@@ -215,28 +215,138 @@ const TabsLayout = (props) => {
           />
         ))}
         <Box className="px-4 mt-4">
-        <Button variant="outlined" className="text-sm capitalize border-none p-2 font-semibold" startIcon={<AddOutlinedIcon />}>
-          New List
-        </Button>
+          <Button
+            variant="outlined"
+            className="text-sm capitalize border-none p-2 font-semibold"
+            startIcon={<AddOutlinedIcon />}
+          >
+            New List
+          </Button>
         </Box>
       </Tabs>
 
-      {children.map((item, index) => (
-        <TabPanel value={value} index={index + 1} key={index}>
+      {/* {children.map((item, index) => (
+        <TabPanel value={value} index={index + 1} className="w-full" key={index}>
           {item}
         </TabPanel>
-      ))}
-      {/* <TabPanel value={value} index={1}>
-        Item One sdf
+      ))} */}
+
+      {/* HOME TAB PANNEL */}
+      <TabPanel value={value} index={1} className="w-full">
+        <TodoHome />
       </TabPanel>
-      <TabPanel value={value} index={2}>
-        Item Two
+      {/* xx HOME TAB PANNEL xx */}
+
+      {/* TODO TAB PANNEL */}
+      <TabPanel value={value} index={2} className="w-full">
+        <Todo />
       </TabPanel>
-      <TabPanel value={value} index={3}>
-        Item Three
-      </TabPanel> */}
+      {/* xx TODO TAB PANNEL xx */}
+
+      {/* COMPLETED TAB PANNEL */}
+      <TabPanel value={value} index={3} className="w-full">
+        <CompletedTodo />
+      </TabPanel>
+      {/* xx COMPLETED TAB PANNEL xx */}
+
+      {/* PROJECT TAB PANNEL */}
+      <TabPanel value={value} index={4} className="w-full">
+        <ProjectTodo />
+      </TabPanel>
+      {/* xx PROJECT TAB PANNEL xx */}
+
+      {/* PERSONAL TAB PANNEL */}
+      <TabPanel value={value} index={4} className="w-full">
+        <PersonalTodo />
+      </TabPanel>
+      {/* xx PERSONAL TAB PANNEL xx */}
+
+       {/* WORK TAB PANNEL */}
+       <TabPanel value={value} index={4} className="w-full">
+          <WorkTodo />
+        </TabPanel>
+        {/* xx WORK TAB PANNEL xx */}
+
     </Box>
   );
 };
 
 export default TabsLayout;
+
+{
+  /* HOME TAB PANNEL COMPONENTS */
+}
+const TodoHome = () => {
+  return (
+    <>
+      <Box component="section" className="max-w-[800px] w-full mx-auto bg-red-300">
+        TodoHome
+      </Box>
+    </>
+  );
+};
+
+{
+  /* HOME TAB PANNEL COMPONENTS */
+}
+const Todo = () => {
+  return (
+    <>
+      <Box component="section" className="max-w-[800px] w-full mx-auto bg-red-300">
+        Todo
+      </Box>
+    </>
+  );
+};
+
+{
+  /* PROJECT TAB PANNEL COMPONENTS */
+}
+const ProjectTodo = () => {
+  return (
+    <>
+      <Box component="section" className="max-w-[800px] w-full mx-auto bg-red-300">
+      ProjectTodo
+      </Box>
+    </>
+  );
+};
+
+{
+  /* COMPLETED TAB PANNEL COMPONENTS */
+}
+const CompletedTodo = () => {
+  return (
+    <>
+      <Box component="section" className="max-w-[800px] w-full mx-auto bg-red-300">
+        CompletedTodo
+      </Box>
+    </>
+  );
+};
+
+{
+  /* PERSONAL TAB PANNEL COMPONENTS */
+}
+const PersonalTodo = () => {
+  return (
+    <>
+      <Box component="section" className="max-w-[800px] w-full mx-auto bg-red-300">
+      PersonalTodo
+      </Box>
+    </>
+  );
+};
+
+{
+  /* WORK TAB PANNEL COMPONENTS */
+}
+const WorkTodo = () => {
+  return (
+    <>
+      <Box component="section" className="max-w-[800px] w-full mx-auto bg-red-300">
+        WorkTodo
+      </Box>
+    </>
+  );
+};
