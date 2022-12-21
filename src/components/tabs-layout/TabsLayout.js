@@ -2,15 +2,30 @@
 
 import React, { useState } from "react";
 import PropTypes from "prop-types";
-import { Tabs, Tab, Typography, Box, Stack, Button } from "@mui/material";
+import {
+  Tabs,
+  Tab,
+  Typography,
+  Box,
+  Stack,
+  Button,
+  Modal,
+  TextField,
+  FormControl,
+  InputLabel,
+  Select,
+  MenuItem,
+} from "@mui/material";
 // import SvgIcon from "@material-ui/core/SvgIcon";
 import { KeyboardDoubleArrowLeft, KeyboardDoubleArrowRight } from "@mui/icons-material";
 import Image from "next/image";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 import DateRangeOutlinedIcon from "@mui/icons-material/DateRangeOutlined";
 import CheckBoxOutlinedIcon from "@mui/icons-material/CheckBoxOutlined";
 import AddOutlinedIcon from "@mui/icons-material/AddOutlined";
+import CloseIcon from "@mui/icons-material/Close";
+import {addNewList} from '../../store/features/todo/listSlice'
 
 const homeModuleData = {
   panelTitle: "todo",
@@ -32,23 +47,6 @@ const homeModuleData = {
     },
   ],
   listTitle: "Lists",
-  ListItems: [
-    {
-      title: "Project",
-      color: "#22C55E",
-      value: "2",
-    },
-    {
-      title: "Personal",
-      color: "#F59E0B",
-      value: "3",
-    },
-    {
-      title: "Work",
-      color: "#EF4444",
-      value: "4",
-    },
-  ],
 };
 
 const TabPanel = (props) => {
@@ -84,6 +82,18 @@ const a11yProps = (index) => {
   };
 };
 
+const style = {
+  position: "absolute",
+  top: "50%",
+  left: "50%",
+  transform: "translate(-50%, -65%)",
+  width: 400,
+  bgcolor: "background.paper",
+  boxShadow: 24,
+  p: 3,
+  borderRadius: "12px",
+};
+
 const TabsLayout = (props) => {
   // console.log(props);
   const { panelTitle, panelList, listTitle, ListItems } = homeModuleData;
@@ -97,6 +107,26 @@ const TabsLayout = (props) => {
     setValue(newValue);
   };
   const theme = useSelector((state) => state.swithDarkmode.darkMode);
+  const lists = useSelector((state) => state.lists.ListItems);
+  console.log("🚀 ~ file: SettingTabsLayout.js:118 ~ General ~ lists", lists)
+
+  const [open, setOpen] = React.useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
+  const [listColor, setListColor] = React.useState("");
+  const [listName, setListName] = React.useState("");
+
+  const dispatch = useDispatch()
+
+  const handleBadge = (event) => {
+    setListColor(event.target.value);
+  };
+  
+  const SaveList = (listColor,listName) => {
+    dispatch(addNewList(listColor,listName))
+    setListColor('')
+    setListName('')
+  }
 
   return (
     <Box
@@ -181,7 +211,7 @@ const TabsLayout = (props) => {
           {listTitle}
         </Typography>
 
-        {ListItems.map((tabPanel, index) => (
+        {lists.map((tabPanel, index) => (
           <Tab
             key={index}
             className="item-center"
@@ -214,14 +244,87 @@ const TabsLayout = (props) => {
             {...a11yProps(index)}
           />
         ))}
-        <Box className="px-4 mt-4">
+        <Box className="px-4 mt-4 my-6">
           <Button
             variant="outlined"
             className="text-sm capitalize border-none p-2 font-semibold"
             startIcon={<AddOutlinedIcon />}
+            onClick={handleOpen}
           >
             New List
           </Button>
+          <Modal
+            open={open}
+            // onClose={handleClose}
+            aria-labelledby="modal-modal-title"
+            aria-describedby="modal-modal-description"
+          >
+            <Box sx={style}>
+              <Box className="flex justify-between items-center">
+                <Typography id="modal-modal-title" variant="h6" className="text-xl font-semibold" component="h2">
+                  Add list
+                </Typography>
+                <Box
+                  sx={{ border: 1, borderColor: "#F5F5F5" }}
+                  className="flex cursor-pointer justify-between items-center flex-col p-1 px-2 rounded-md"
+                  onClick={handleClose}
+                >
+                  <CloseIcon className="w-4" />
+                </Box>
+              </Box>
+              <Box className="mt-3">
+                <InputLabel className="text-sm font-medium mb-2" sx={{ color: "secondary.contrastText" }}>
+                  List name
+                </InputLabel>
+                <TextField
+                  id="outlined-basic"
+                  variant="outlined"
+                  className={`w-full  ${theme ? "_inputDark" : "_inputLight"}`}
+                  sx={{ "& fieldset": { border: "none" } }}
+                  border="none"
+                  value={listName}
+                  onChange={(e)=>setListName(e.target.value)}
+                />
+                <Box fullWidth className="mt-4 badgeSelector">
+                  <InputLabel className="text-sm font-medium mb-2" sx={{ color: "secondary.contrastText" }}>
+                    Color
+                  </InputLabel>
+                  <Select
+                    labelId="demo-simple-select-label"
+                    id="demo-simple-select"
+                    value={listColor}
+                    sx={{ "& fieldset": { border: "none" } }}
+                    // IconComponent={() => ( <KeyboardArrowDownIcon /> )}
+                    className={`w-full  ${theme ? "_inputDark" : "_inputLight"}`}
+                    onChange={handleBadge}
+                  >
+                    <MenuItem value="#CA4C3E" className="text-sm font-medium">
+                      <span className="bg-[#CA4C3E] p-[6px] mr-2 inline-block rounded-full"></span> Red
+                    </MenuItem>
+                    <MenuItem value="#F19E4B" className="text-sm font-medium">
+                      <span className="bg-[#F19E4B] p-[6px] mr-2 inline-block rounded-full"></span> Orange
+                    </MenuItem>
+                    <MenuItem value="#F3D246" className="text-sm font-medium">
+                      <span className="bg-[#F3D246] p-[6px] mr-2 inline-block rounded-full"></span> Yellow
+                    </MenuItem>
+                    <MenuItem value="#B1B851" className="text-sm font-medium">
+                      <span className="bg-[#B1B851] p-[6px] mr-2 inline-block rounded-full"></span> Olive Green
+                    </MenuItem>
+                    <MenuItem value="#22C55E" className="text-sm font-medium">
+                      <span className="bg-[#22C55E] p-[6px] mr-2 inline-block rounded-full"></span> Green
+                    </MenuItem>
+                    <MenuItem value="#428DAA" className="text-sm font-medium">
+                      <span className="bg-[#428DAA] p-[6px] mr-2 inline-block rounded-full"></span> Teal
+                    </MenuItem>
+                    <MenuItem value="#4FA7EF" className="text-sm font-medium">
+                      <span className="bg-[#4FA7EF] p-[6px] mr-2 inline-block rounded-full"></span> Sky Blue
+                    </MenuItem>
+                  </Select>
+                </Box>
+                <Button className={`w-full rounded-full ${listName.length === 0 || listColor.length === 0 ? 'bg-[#D6D3D1]' : 'bg-[#4FA7EF]'}  mt-6 p-3 capitalize text-white font-semibold text-base`} onClick={SaveList} >Add</Button>
+              </Box>
+            </Box>
+          </Modal>
         </Box>
       </Tabs>
 
@@ -250,32 +353,28 @@ const TabsLayout = (props) => {
       {/* xx COMPLETED TAB PANNEL xx */}
 
       {/* PROJECT TAB PANNEL */}
-      <TabPanel value={value} index={4} className="w-full">
+      <TabPanel value={value} index={5} className="w-full">
         <ProjectTodo />
       </TabPanel>
       {/* xx PROJECT TAB PANNEL xx */}
 
       {/* PERSONAL TAB PANNEL */}
-      <TabPanel value={value} index={4} className="w-full">
+      <TabPanel value={value} index={6} className="w-full">
         <PersonalTodo />
       </TabPanel>
       {/* xx PERSONAL TAB PANNEL xx */}
 
-       {/* WORK TAB PANNEL */}
-       <TabPanel value={value} index={4} className="w-full">
-          <WorkTodo />
-        </TabPanel>
-        {/* xx WORK TAB PANNEL xx */}
-
+      {/* WORK TAB PANNEL */}
+      <TabPanel value={value} index={7} className="w-full">
+        <WorkTodo />
+      </TabPanel>
+      {/* xx WORK TAB PANNEL xx */}
     </Box>
   );
 };
 
 export default TabsLayout;
 
-{
-  /* HOME TAB PANNEL COMPONENTS */
-}
 const TodoHome = () => {
   return (
     <>
@@ -286,9 +385,6 @@ const TodoHome = () => {
   );
 };
 
-{
-  /* HOME TAB PANNEL COMPONENTS */
-}
 const Todo = () => {
   return (
     <>
@@ -299,22 +395,6 @@ const Todo = () => {
   );
 };
 
-{
-  /* PROJECT TAB PANNEL COMPONENTS */
-}
-const ProjectTodo = () => {
-  return (
-    <>
-      <Box component="section" className="max-w-[800px] w-full mx-auto bg-red-300">
-      ProjectTodo
-      </Box>
-    </>
-  );
-};
-
-{
-  /* COMPLETED TAB PANNEL COMPONENTS */
-}
 const CompletedTodo = () => {
   return (
     <>
@@ -325,22 +405,26 @@ const CompletedTodo = () => {
   );
 };
 
-{
-  /* PERSONAL TAB PANNEL COMPONENTS */
-}
-const PersonalTodo = () => {
+const ProjectTodo = () => {
   return (
     <>
       <Box component="section" className="max-w-[800px] w-full mx-auto bg-red-300">
-      PersonalTodo
+        ProjectTodo
       </Box>
     </>
   );
 };
 
-{
-  /* WORK TAB PANNEL COMPONENTS */
-}
+const PersonalTodo = () => {
+  return (
+    <>
+      <Box component="section" className="max-w-[800px] w-full mx-auto bg-red-300">
+        PersonalTodo
+      </Box>
+    </>
+  );
+};
+
 const WorkTodo = () => {
   return (
     <>

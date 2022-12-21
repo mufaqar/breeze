@@ -129,8 +129,17 @@ input:-internal-autofill-selected {
 ._switch .css-1dp96f1-MuiSwitch-root .MuiSwitch-switchBase.Mui-checked {
   background: #3F9BFC !important;
 }
-
-
+._inputLight>div{
+  border-radius: 8px !important;
+  background: #F5F5F5 !important;
+}
+._inputDark>div{
+  border-radius: 8px !important;
+  background: #44403C !important;
+}
+.badgeSelector .MuiMenu-list{
+  background: red;
+}
 
 
 

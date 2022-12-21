@@ -4,6 +4,7 @@ import switchThemeSlice from './features/themeFeatures/switchtheme'
 import fontsSlice from './features/themeFeatures/fontsSlice'
 import showSettingSlice from './features/themeFeatures/showSettingSlice'
 import soundScapeSlice from './features/soundscape/soundScapeSlice'
+import listSlice from './features/todo/listSlice'
 
 const store = configureStore({
     reducer: {
@@ -12,6 +13,7 @@ const store = configureStore({
         switchFont: fontsSlice.reducer,
         hideShow: showSettingSlice.reducer,
         soundscape: soundScapeSlice.reducer,
+        lists: listSlice.reducer
     }
 })
 

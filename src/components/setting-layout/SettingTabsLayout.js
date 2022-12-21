@@ -114,6 +114,8 @@ const General = () => {
   const [fontType,setFontType] = React.useState()
 
   const theme = useSelector((state)=>state.swithDarkmode.darkMode)
+  
+
   const dispatch = useDispatch()
 
   const lightMode = (i) => {
