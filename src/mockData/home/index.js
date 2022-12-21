@@ -1,5 +1,6 @@
-// import { HomeIcon, CalenderIcon, TaskCompletedIcon } from '../../../../public/assets/export'
 import ico from '../../../public/assets/images/sun.png'
+
+
 export const homeModuleData = {
     panelTitle: "todo",
     panelList: [

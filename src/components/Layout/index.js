@@ -40,7 +40,7 @@ export default function Layout(props) {
             main: "#3F9BFC",
             light: "#212C39",
             dark: neutral[90],
-            contrastText: neutral[40],
+            contrastText: neutral[70],
           },
           secondary: {
             main: neutral[70],
@@ -82,6 +82,7 @@ export default function Layout(props) {
             main: "#3F9BFC",
             dark: neutral[90],
             light: neutral[20],
+            contrastText: neutral[10],
           },
           secondary: {
             main: neutral[20],

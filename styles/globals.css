@@ -208,10 +208,10 @@ input:-internal-autofill-selected {
 .tablist svg{
   margin-bottom: 0 !important;
 }
-.tablist.Mui-selected{
+.tablist.Mui-selected, .lightTodoTabs .Mui-selected{
   background: rgba(63, 155, 252, 0.15) !important;
 }
-.tablist.Mui-selected._dark{
+.tablist.Mui-selected._dark, .darkTodoTabs .Mui-selected{
   background: #212C39 !important;
 }
 .tablist.Mui-selected p{
@@ -396,4 +396,17 @@ input:-internal-autofill-selected {
 }
 a{
   text-decoration: none;
+}
+
+.lightTodoTabs .tabValue {
+  background: #F5F5F5;
+  color: #78716C;
+}
+.darkTodoTabs .tabValue{
+  background: #44403C;
+  color: #D6D3D1;
+}
+.lightTodoTabs .Mui-selected .tabValue, 
+.darkTodoTabs .Mui-selected .tabValue{
+  background: transparent;
 }
