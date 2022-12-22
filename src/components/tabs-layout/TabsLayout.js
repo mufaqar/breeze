@@ -15,6 +15,7 @@ import {
   InputLabel,
   Select,
   MenuItem,
+  Paper,
 } from "@mui/material";
 // import SvgIcon from "@material-ui/core/SvgIcon";
 import { KeyboardDoubleArrowLeft, KeyboardDoubleArrowRight } from "@mui/icons-material";
@@ -25,7 +26,14 @@ import DateRangeOutlinedIcon from "@mui/icons-material/DateRangeOutlined";
 import CheckBoxOutlinedIcon from "@mui/icons-material/CheckBoxOutlined";
 import AddOutlinedIcon from "@mui/icons-material/AddOutlined";
 import CloseIcon from "@mui/icons-material/Close";
-import {addNewList} from '../../store/features/todo/listSlice'
+import { addNewList } from "../../store/features/todo/listSlice";
+import MoreHorizOutlinedIcon from "@mui/icons-material/MoreHorizOutlined";
+import CalendarMonthOutlinedIcon from "@mui/icons-material/CalendarMonthOutlined";
+import calender from "../../../public/assets/images/calendar.png";
+import KeyboardArrowDownOutlinedIcon from "@mui/icons-material/KeyboardArrowDownOutlined";
+import DoneOutlinedIcon from '@mui/icons-material/DoneOutlined';
+
+
 
 const homeModuleData = {
   panelTitle: "todo",
@@ -108,7 +116,9 @@ const TabsLayout = (props) => {
   };
   const theme = useSelector((state) => state.swithDarkmode.darkMode);
   const lists = useSelector((state) => state.lists.ListItems);
-  console.log("🚀 ~ file: SettingTabsLayout.js:118 ~ General ~ lists", lists)
+  const todos = useSelector((state) => state.addTodo.todos);
+
+  console.log("🚀 ~ file: SettingTabsLayout.js:118 ~ General ~ lists", lists);
 
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
@@ -116,18 +126,18 @@ const TabsLayout = (props) => {
   const [listColor, setListColor] = React.useState("");
   const [listName, setListName] = React.useState("");
 
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   const handleBadge = (event) => {
     setListColor(event.target.value);
   };
 
   const SaveList = () => {
-    const data = {color:listColor, title:listName, value: "5"}
-    dispatch(addNewList(data))
-    setListColor('')
-    setListName('')
-  }
+    const data = { color: listColor, title: listName, value: "5" };
+    dispatch(addNewList(data));
+    setListColor("");
+    setListName("");
+  };
 
   return (
     <Box
@@ -284,7 +294,7 @@ const TabsLayout = (props) => {
                   sx={{ "& fieldset": { border: "none" } }}
                   border="none"
                   value={listName}
-                  onChange={(e)=>setListName(e.target.value)}
+                  onChange={(e) => setListName(e.target.value)}
                 />
                 <Box fullWidth className="mt-4 badgeSelector">
                   <InputLabel className="text-sm font-medium mb-2" sx={{ color: "secondary.contrastText" }}>
@@ -322,7 +332,14 @@ const TabsLayout = (props) => {
                     </MenuItem>
                   </Select>
                 </Box>
-                <Button className={`w-full rounded-full ${listName.length === 0 || listColor.length === 0 ? 'bg-[#D6D3D1]' : 'bg-[#4FA7EF]'}  mt-6 p-3 capitalize text-white font-semibold text-base`} onClick={SaveList} >Add</Button>
+                <Button
+                  className={`w-full rounded-full ${
+                    listName.length === 0 || listColor.length === 0 ? "bg-[#D6D3D1]" : "bg-[#4FA7EF]"
+                  }  mt-6 p-3 capitalize text-white font-semibold text-base`}
+                  onClick={SaveList}
+                >
+                  Add
+                </Button>
               </Box>
             </Box>
           </Modal>
@@ -337,7 +354,7 @@ const TabsLayout = (props) => {
 
       {/* HOME TAB PANNEL */}
       <TabPanel value={value} index={1} className="w-full">
-        <TodoHome />
+        <TodoHome lists={lists} theme={theme} handleOpen={handleOpen} todos={todos}/>
       </TabPanel>
       {/* xx HOME TAB PANNEL xx */}
 
@@ -353,34 +370,115 @@ const TabsLayout = (props) => {
       </TabPanel>
       {/* xx COMPLETED TAB PANNEL xx */}
 
-      {/* PROJECT TAB PANNEL */}
-      <TabPanel value={value} index={5} className="w-full">
-        <ProjectTodo />
-      </TabPanel>
-      {/* xx PROJECT TAB PANNEL xx */}
-
-      {/* PERSONAL TAB PANNEL */}
-      <TabPanel value={value} index={6} className="w-full">
-        <PersonalTodo />
-      </TabPanel>
-      {/* xx PERSONAL TAB PANNEL xx */}
-
-      {/* WORK TAB PANNEL */}
-      <TabPanel value={value} index={7} className="w-full">
-        <WorkTodo />
-      </TabPanel>
-      {/* xx WORK TAB PANNEL xx */}
+      {/* LIST TAB PANNEL */}
+      {lists.map((li, i) => (
+        <TabPanel value={value} index={i + 5} className="w-full">
+          <Box component="section" className="max-w-[800px] w-full mx-auto bg-red-300">
+            {i}
+          </Box>
+        </TabPanel>
+      ))}
+      {/* xx LIST TAB PANNEL xx */}
     </Box>
   );
 };
 
 export default TabsLayout;
 
-const TodoHome = () => {
+const TodoHome = ({ lists, theme, handleOpen, todos }) => {
+  const [openTask, setOpenTask] = useState(false);
+  const [openList, setOpenList] = useState(false);
+  const [newTaskTitle, setNewTaskTitle] = useState("");
+  const [selectedList, setSelectedList] = useState("");
+  const [selectedListColor, setSelectedListColor] = useState("");
+  
+  console.log("🚀 ~ todos", todos)
+  const dispatch = useDispatch()
+  
+
   return (
     <>
-      <Box component="section" className="max-w-[800px] w-full mx-auto bg-red-300">
-        TodoHome
+      <Box component="section" className="max-w-[800px] w-full mx-auto">
+        <Box className="flex justify-between items-center" sx={{ color: "secondary.light" }}>
+          <Typography className="text-2xl font-bold">Home</Typography>
+          <MoreHorizOutlinedIcon />
+        </Box>
+        <Box className={`mt-4 p-2 relative max-h-14 rounded-lg ${theme ? "bg-[#292524]" : "bg-[#F5F5F5]"}`}>
+          {openTask ? (
+            <Box className="flex justify-between items-center">
+              <input
+                className={`w-full p-3 border-none outline-none bg-transparent shadow-none ${theme && "text-white"}`}
+                value={newTaskTitle}
+                placeholder="Enter task name"
+                onChange={(e) => setNewTaskTitle(e.target.value)}
+              />
+              <Box className="flex items-center cursor-pointer space-x-1"  onClick={()=>setOpenList(!openList)}>
+                <CalendarMonthOutlinedIcon color="primary" />
+                <Typography>Today</Typography>
+                <KeyboardArrowDownOutlinedIcon />
+              </Box>
+              {/* list badge */}
+              <Paper className={`absolute ${openList ? 'block' : 'hidden'} top-12 right-3 rounded-lg ${theme ? 'dark_border' : 'light_border'}`} >
+                <Box className="w-48 py-4">
+                  <Box className="flex items-center px-3 space-x-1">
+                    <CalendarMonthOutlinedIcon color="primary" />
+                    <Typography className="text-blue-500">Today</Typography>
+                  </Box>
+                  <Box className={`mt-4 pt-2 ${theme ? "dbb" : "lbb"}`}>
+                    {lists.map((tabPanel, index) => (
+                      <Box
+                        className={`flex relative items-start space-x-1 p-3 px-3 py-[10px] cursor-pointer 
+                        ${ theme ? "hover:bg-[#44403C]" : "hover:bg-[#F5F5F5]"}
+                        ${ selectedList === tabPanel.title && !theme && 'bg-[#F5F5F5]'} 
+                        ${ selectedList === tabPanel.title && theme && 'bg-[#44403C]'} `}
+                        key={index}
+                        onClick={()=>{setSelectedList(tabPanel.title); setSelectedListColor(tabPanel.color)}}
+                      >
+                        <Box className={`rounded-full p-2 mt-[2.5px] mr-2`} style={{ background: tabPanel.color }}></Box>
+                        <Typography textTransform="capitalize" className="text-sm" fontWeight={400}>
+                          {tabPanel.title}
+                        </Typography>
+                        {
+                          selectedList === tabPanel.title && <i className="absolute top-2 right-2"><DoneOutlinedIcon className="w-5"/></i>
+                        }
+                      </Box>
+                    ))}
+                  </Box>
+                  <Box className="flex items-center cursor-pointer px-3 hover:text-bllue-500 mt-2 space-x-1" onClick={handleOpen}>
+                    <AddOutlinedIcon className="w-5"/>
+                    <Typography className="text-sm">New list</Typography>
+                  </Box>
+                </Box>
+              </Paper>
+            </Box>
+          ) : (
+            <Box
+              variant="outlined"
+              className="text-sm capitalize flex cursor-pointer text-blue-500 items-center border-none p-2 font-medium"
+              onClick={() => setOpenTask(true)}
+            >
+              <AddOutlinedIcon className="mr-1 w-5" />
+              New Task
+            </Box>
+          )}
+        </Box>
+      </Box>
+      <Box className="mt-10 max-w-[800px] w-full mx-auto">
+          {
+            todos.map((todo,i)=>{
+              return(
+                <Box sx={{border:1, borderColor: 'secondary.main', p:1, borderRadius: "6px", px:2, mb:"7px"}} key={i}>
+                  <Box className="flex items-center">
+                      <div className="p-2 mr-3 rounded-full" style={{ border : `1.5px solid ${todo.color}`}}></div>
+                      <div>
+                        <Typography component='h6' className="font-normal text-sm">{todo.title}</Typography>
+                        <Typography className="text-[#78716C] font-normal text-xs">{todo.listTitle}</Typography>
+                      </div>
+                  </Box>
+              </Box>
+              )
+            })
+          }
       </Box>
     </>
   );
@@ -401,36 +499,6 @@ const CompletedTodo = () => {
     <>
       <Box component="section" className="max-w-[800px] w-full mx-auto bg-red-300">
         CompletedTodo
-      </Box>
-    </>
-  );
-};
-
-const ProjectTodo = () => {
-  return (
-    <>
-      <Box component="section" className="max-w-[800px] w-full mx-auto bg-red-300">
-        ProjectTodo
-      </Box>
-    </>
-  );
-};
-
-const PersonalTodo = () => {
-  return (
-    <>
-      <Box component="section" className="max-w-[800px] w-full mx-auto bg-red-300">
-        PersonalTodo
-      </Box>
-    </>
-  );
-};
-
-const WorkTodo = () => {
-  return (
-    <>
-      <Box component="section" className="max-w-[800px] w-full mx-auto bg-red-300">
-        WorkTodo
       </Box>
     </>
   );
