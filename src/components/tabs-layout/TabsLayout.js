@@ -372,7 +372,7 @@ const TabsLayout = (props) => {
 
       {/* LIST TAB PANNEL */}
       {lists.map((li, i) => (
-        <TabPanel value={value} index={i + 5} className="w-full">
+        <TabPanel value={value} index={i + 5} className="w-full" key={i}>
           <Box component="section" className="max-w-[800px] w-full mx-auto bg-red-300">
             {i}
           </Box>
@@ -393,7 +393,6 @@ const TodoHome = ({ lists, theme, handleOpen, todos }) => {
   const [selectedListColor, setSelectedListColor] = useState("");
   
   console.log("🚀 ~ todos", todos)
-  const dispatch = useDispatch()
   
 
   return (
