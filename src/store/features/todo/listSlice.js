@@ -25,7 +25,7 @@ const listSlice = createSlice({
     initialState,
     reducers:{
       addNewList:(state,action)=>{
-        console.log('response', action.payload)
+        state.ListItems.push(action.payload)
       }
     }
 })

@@ -123,7 +123,7 @@ const TabsLayout = (props) => {
   };
 
   const SaveList = () => {
-    const data = {listColor, listName}
+    const data = {color:listColor, title:listName, value: "5"}
     dispatch(addNewList(data))
     setListColor('')
     setListName('')
