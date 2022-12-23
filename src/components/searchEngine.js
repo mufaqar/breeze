@@ -4,7 +4,7 @@ import Image from "next/image";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import { Google, Bing, DuckDuckGo, Filter } from "../../public/assets/export";
 import { Box, IconButton, Paper, TextField, Typography } from "@mui/material";
-import CustomIconButton from "./iconButton";
+
 import { useSelector } from "react-redux";
 
 export default function SearchEngine() {
